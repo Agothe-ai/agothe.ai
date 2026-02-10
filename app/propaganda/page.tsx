@@ -3,7 +3,7 @@ import { ServicePage } from '@/components/agothe/service-page-template';
 import { PropagandaDetector } from '@/components/motion/propaganda-detector';
 
 export const metadata: Metadata = {
-  title: 'Propaganda Detection (PEE-\u03A9)',
+  title: 'Propaganda Detection (PEE-Ω)',
   description: 'Strip manipulation from information. Detect false certainty, emotional amplification, and hidden agendas with quantified scoring.',
 };
 
@@ -13,7 +13,7 @@ export default function PropagandaPage() {
       accentColor="#ff3366"
       title="Propaganda Detection"
       tagline="Strip manipulation from information."
-      description="PEE-\u03A9 (Propaganda & Epistemic Exploitation \u2014 Omega Scan) identifies and quantifies manipulation layers in any content. It detects false certainty, emotional amplification, hidden agendas, and source manipulation with a quantified Bullshit Score."
+      description="PEE-Ω (Propaganda & Epistemic Exploitation — Omega Scan) identifies and quantifies manipulation layers in any content. It detects false certainty, emotional amplification, hidden agendas, and source manipulation with a quantified Bullshit Score."
       price="From $997"
       priceNote="Per report. Designed for newsrooms and policy organizations."
       ctaLabel="Analyze Content"
@@ -27,7 +27,7 @@ export default function PropagandaPage() {
         'Without quantification, detection relies on individual judgment',
       ]}
       solutionTitle="Quantified manipulation detection"
-      solutionDescription="PEE-\u03A9 applies multi-AI analysis to strip propaganda layers from content, producing a numerical Bullshit Score and detailed breakdown of manipulation techniques used."
+      solutionDescription="PEE-Ω applies multi-AI analysis to strip propaganda layers from content, producing a numerical Bullshit Score and detailed breakdown of manipulation techniques used."
       solutionMetrics={[
         { label: 'Detection Rate', value: '96%' },
         { label: 'Techniques Tracked', value: '23+' },
@@ -40,7 +40,7 @@ export default function PropagandaPage() {
         { title: 'Source Validation', description: 'Traces claims to original sources, identifying distortion, omission, and fabrication in the chain.' },
       ]}
       faq={[
-        { question: 'What content can PEE-\u03A9 analyze?', answer: 'Any text-based content: news articles, policy papers, social media campaigns, corporate communications, political speeches, and academic publications.' },
+        { question: 'What content can PEE-Ω analyze?', answer: 'Any text-based content: news articles, policy papers, social media campaigns, corporate communications, political speeches, and academic publications.' },
         { question: 'How accurate is the Bullshit Score?', answer: '96% detection rate across 23+ known propaganda techniques. Validated against expert human analysis with high correlation.' },
         { question: 'Who uses this?', answer: 'Newsrooms, policy research organizations, intelligence analysts, academic institutions, and decision-makers who need clean information.' },
         { question: 'Can you analyze an entire media narrative?', answer: 'Yes. We can analyze collections of content across sources and time periods to map narrative manipulation patterns.' },

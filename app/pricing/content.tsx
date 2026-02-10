@@ -17,7 +17,7 @@ const services: Service[] = [
   { name: 'Research Synthesis', price: '$500+', color: '#00f0ff', href: '/research' },
   { name: 'CAPS Intelligence', price: '$2,500+', color: '#ffd700', href: '/intelligence' },
   { name: 'Solvey', price: '$1,500+', color: '#ff3366', href: '/solvey' },
-  { name: 'PEE-\u03A9', price: '$2,000+', color: '#ff3366', href: '/propaganda' },
+  { name: 'PEE-Ω', price: '$2,000+', color: '#ff3366', href: '/propaganda' },
   { name: 'Automation', price: '$297+', color: '#00f0ff', href: '/automation' },
   { name: 'Valentine', price: '$3,000+', color: '#8b5cf6', href: '/simulation' },
   { name: 'Framework', price: '$297/mo', color: '#06b6d4', href: '/framework' },

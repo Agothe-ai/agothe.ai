@@ -154,7 +154,7 @@ export function PropagandaDetector() {
         >
           <div className="mb-4 flex items-center justify-between">
             <span className="font-mono text-xs tracking-wider text-agothe-teal">
-              PEE-{'\u03A9'} SCANNER
+              PEE-{'Ω'} SCANNER
             </span>
             <span className="font-mono text-xs text-agothe-muted">
               {phase === 1 && 'Ready'}

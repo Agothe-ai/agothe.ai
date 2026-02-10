@@ -130,14 +130,14 @@ const docSections: DocSection[] = [
   {
     id: 'delta-h',
     icon: <Activity className="h-4 w-4" />,
-    title: '\u03B4_H Measurement Protocol',
+    title: 'δ_H Measurement Protocol',
     subsections: [
       {
         id: 'delta-h-definition',
         title: 'Definition',
         content: [
-          '\u03B4_H (delta-H) measures the system stress index -- the distance between a system\'s current constraint field configuration and its nearest collapse threshold.',
-          'Lower \u03B4_H values indicate proximity to structural collapse. Higher values indicate stability, though extremely high values can indicate rigidity (a different form of systemic risk).',
+          'δ_H (delta-H) measures the system stress index -- the distance between a system\'s current constraint field configuration and its nearest collapse threshold.',
+          'Lower δ_H values indicate proximity to structural collapse. Higher values indicate stability, though extremely high values can indicate rigidity (a different form of systemic risk).',
           'The measurement is domain-agnostic: it applies equally to geopolitical systems, organizational structures, economic markets, or individual cognitive architectures.',
         ],
       },
@@ -148,18 +148,18 @@ const docSections: DocSection[] = [
           'Step 1: Map all active constraint fields in the target system. Each field is represented as a vector in the constraint space C.',
           'Step 2: Calculate the constraint density tensor D(C) representing the interaction intensity between constraint fields.',
           'Step 3: Identify collapse attractors -- states where constraint field interactions create self-reinforcing negative feedback loops.',
-          'Step 4: Compute \u03B4_H as the minimum geodesic distance in constraint space between the current system state and the nearest collapse attractor.',
-          'Step 5: Normalize to a standard scale where \u03B4_H < 1.0 indicates critical proximity, 1.0-2.0 indicates caution zone, and >2.0 indicates relative stability.',
+          'Step 4: Compute δ_H as the minimum geodesic distance in constraint space between the current system state and the nearest collapse attractor.',
+          'Step 5: Normalize to a standard scale where δ_H < 1.0 indicates critical proximity, 1.0-2.0 indicates caution zone, and >2.0 indicates relative stability.',
         ],
       },
       {
         id: 'delta-h-applications',
         title: 'Practical Applications',
         content: [
-          'Crisis Intelligence: Real-time \u03B4_H monitoring enables early warning of system collapse. The US-Iran analysis identified a 72-hour escalation window through \u03B4_H trajectory analysis.',
-          'Organizational Health: Map organizational constraint fields (resource, talent, strategic, cultural) and monitor \u03B4_H to detect emerging structural risks before they manifest.',
-          'Market Analysis: Apply \u03B4_H to financial market constraint fields to identify systemic stress patterns invisible to traditional volatility measures.',
-          'Personal Systems: Individual cognitive constraint mapping uses \u03B4_H to identify burnout trajectories, attention fragmentation, and optimal recovery pathways.',
+          'Crisis Intelligence: Real-time δ_H monitoring enables early warning of system collapse. The US-Iran analysis identified a 72-hour escalation window through δ_H trajectory analysis.',
+          'Organizational Health: Map organizational constraint fields (resource, talent, strategic, cultural) and monitor δ_H to detect emerging structural risks before they manifest.',
+          'Market Analysis: Apply δ_H to financial market constraint fields to identify systemic stress patterns invisible to traditional volatility measures.',
+          'Personal Systems: Individual cognitive constraint mapping uses δ_H to identify burnout trajectories, attention fragmentation, and optimal recovery pathways.',
         ],
       },
     ],

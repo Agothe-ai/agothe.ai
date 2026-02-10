@@ -105,7 +105,7 @@ export function TextReveal({
         <span key={i} className="tr-wrap inline-block overflow-hidden">
           <span className="tr-unit inline-block">
             {word}
-            {i < arr.length - 1 ? '\u00A0' : ''}
+            {i < arr.length - 1 ? ' ' : ''}
           </span>
         </span>
       ));

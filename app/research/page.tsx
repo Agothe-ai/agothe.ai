@@ -38,11 +38,11 @@ export default function ResearchPage() {
         { title: 'Executive Summary', description: 'Structured output with key findings, methodology overview, and actionable recommendations.' },
       ]}
       faq={[
-        { question: 'What databases do you access?', answer: 'Primarily Semantic Scholar\u2019s Open Research Corpus (200M+ papers), supplemented by domain-specific sources as needed for each project.' },
+        { question: 'What databases do you access?', answer: 'Primarily Semantic Scholar’s Open Research Corpus (200M+ papers), supplemented by domain-specific sources as needed for each project.' },
         { question: 'How many papers can you synthesize?', answer: 'Up to 1,000 papers per synthesis report. For larger-scope reviews, we can run multiple passes and integrate results.' },
         { question: 'What formats do you deliver in?', answer: 'Structured PDF report with executive summary, methodology, findings, citation map, and gap analysis. Raw data available on request.' },
-        { question: 'Can you handle specialized domains?', answer: 'Yes. The multi-AI processing adapts to any academic domain. We\u2019ve covered physics, medicine, policy, economics, and more.' },
-        { question: 'What\u2019s the turnaround time?', answer: '48 hours for standard synthesis. Rush delivery (24 hours) available for additional fee.' },
+        { question: 'Can you handle specialized domains?', answer: 'Yes. The multi-AI processing adapts to any academic domain. We’ve covered physics, medicine, policy, economics, and more.' },
+        { question: 'What’s the turnaround time?', answer: '48 hours for standard synthesis. Rush delivery (24 hours) available for additional fee.' },
       ]}
       relatedServices={[
         { label: 'CAPS Intelligence', href: '/intelligence' },

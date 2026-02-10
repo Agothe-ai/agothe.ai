@@ -22,7 +22,7 @@ const navGroups: NavGroup[] = [
       { label: 'Research Synthesis ($500+)', href: '/research' },
       { label: 'CAPS Intelligence ($2,500+)', href: '/intelligence' },
       { label: 'Constraint Analysis (Solvey)', href: '/solvey' },
-      { label: 'Propaganda Detection (PEE-\u03A9)', href: '/propaganda' },
+      { label: 'Propaganda Detection (PEE-Ω)', href: '/propaganda' },
       { label: 'AI Automation ($297+)', href: '/automation' },
       { label: 'Mathematical Simulation (Valentine)', href: '/simulation' },
       { label: 'Framework Licensing ($297/mo)', href: '/framework' },

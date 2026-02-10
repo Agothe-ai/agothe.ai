@@ -15,7 +15,7 @@ const founders = [
     innerGradient: 'bg-gradient-to-br from-[#00f0ff]/20 via-agothe-bg to-agothe-bg',
     bio: [
       'Independent systems researcher specializing in multi-domain constraint analysis, mathematical modeling, and AI orchestration.',
-      'Developed the Constraint-Resonance Duality (CRD) framework \u2014 a mathematical system for measuring collapse risk and emergence patterns across personal, organizational, and civilizational scales.',
+      'Developed the Constraint-Resonance Duality (CRD) framework — a mathematical system for measuring collapse risk and emergence patterns across personal, organizational, and civilizational scales.',
       'Architect of a 2,000+ page living research Codex spanning applied mathematics, crisis intelligence, consciousness mapping, and cross-domain systems theory.',
       'Designed and validated a 52-engine computational architecture for real-time pattern detection, scenario simulation, and multi-AI coordination.',
     ],
@@ -27,7 +27,7 @@ const founders = [
     innerGradient: 'bg-gradient-to-br from-[#ffd700]/15 via-agothe-bg to-agothe-bg',
     bio: [
       'Phenomenological researcher and creative architect specializing in experiential design, sensory systems, and aesthetic innovation.',
-      'Pioneered the resonance-side validation of the CRD framework \u2014 translating mathematical structures into embodied, experiential protocols.',
+      'Pioneered the resonance-side validation of the CRD framework — translating mathematical structures into embodied, experiential protocols.',
       'Leads creative direction across all Agothe verticals including therapeutic design, fashion systems, and immersive experience architecture.',
       'Brings the human-felt dimension that turns mathematical frameworks into tools people actually use.',
     ],

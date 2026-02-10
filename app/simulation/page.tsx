@@ -19,7 +19,7 @@ export default function SimulationPage() {
       ctaHref="/contact"
       problemTitle="Decisions without simulation are gambles"
       problemItems={[
-        'Most scenario planning is qualitative \u2014 best case, worst case, most likely',
+        'Most scenario planning is qualitative — best case, worst case, most likely',
         'Real systems have thousands of interacting variables',
         'Human intuition systematically misjudges probability distributions',
         'Without quantified outcomes, strategy is just storytelling',
@@ -33,16 +33,16 @@ export default function SimulationPage() {
         { label: 'Delivery', value: '<24 Hours' },
       ]}
       features={[
-        { title: 'Constraint Modeling', description: 'Full \u03B4_H field modeling of your system\u2019s constraint architecture. Identifies critical dependencies and failure modes.' },
+        { title: 'Constraint Modeling', description: 'Full δ_H field modeling of your system’s constraint architecture. Identifies critical dependencies and failure modes.' },
         { title: 'Monte Carlo Simulation', description: '1,000+ randomized scenario runs with statistical output including probability distributions, confidence intervals, and tail risks.' },
-        { title: '\u03B4_H Field Rendering', description: 'Visual and quantitative mapping of how constraint fields evolve across scenarios, showing collapse and emergence pathways.' },
-        { title: 'Decision Optimization', description: 'Ranked intervention strategies with expected \u0394\u03B4_H impact, cost estimates, and probability of success.' },
+        { title: 'δ_H Field Rendering', description: 'Visual and quantitative mapping of how constraint fields evolve across scenarios, showing collapse and emergence pathways.' },
+        { title: 'Decision Optimization', description: 'Ranked intervention strategies with expected Δδ_H impact, cost estimates, and probability of success.' },
       ]}
       faq={[
         { question: 'What can Valentine simulate?', answer: 'Any system with definable constraints: market dynamics, policy outcomes, organizational restructuring, supply chains, geopolitical scenarios, and technology adoption curves.' },
         { question: 'How is this different from traditional modeling?', answer: 'Valentine uses constraint field theory, not just statistical regression. It models structural relationships between variables, not just correlations.' },
         { question: 'What do I receive?', answer: 'A full simulation report with scenario distributions, probability-weighted outcomes, critical threshold identification, and ranked intervention strategies.' },
-        { question: 'Can I integrate this with Solvey Scanner?', answer: 'Yes. Valentine and Solvey share the same \u03B4_H framework. Real-time Solvey monitoring can feed directly into Valentine simulations for dynamic scenario updates.' },
+        { question: 'Can I integrate this with Solvey Scanner?', answer: 'Yes. Valentine and Solvey share the same δ_H framework. Real-time Solvey monitoring can feed directly into Valentine simulations for dynamic scenario updates.' },
       ]}
       relatedServices={[
         { label: 'Constraint Analysis', href: '/solvey' },

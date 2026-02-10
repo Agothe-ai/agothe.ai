@@ -9,7 +9,7 @@ const services = [
   'Research Synthesis',
   'CAPS Intelligence',
   'Constraint Analysis (Solvey)',
-  'Propaganda Detection (PEE-\u03A9)',
+  'Propaganda Detection (PEE-Ω)',
   'AI Automation',
   'Mathematical Simulation (Valentine)',
   'Framework Licensing',

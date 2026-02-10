@@ -44,7 +44,7 @@ function AnimatedGauge({ target, color }: { target: number; color: string }) {
       <p className="mt-2 font-mono text-2xl font-bold" style={{ color: gaugeColor }}>
         {value.toFixed(2)}
       </p>
-      <p className="text-[10px] uppercase tracking-wider text-agothe-muted">\u03B4_H Collapse Index</p>
+      <p className="text-[10px] uppercase tracking-wider text-agothe-muted">δ_H Collapse Index</p>
     </div>
   );
 }
@@ -116,7 +116,7 @@ export function CAPSReportPreview() {
           <AnimatedItem>
             <div className="obsidian-glass rounded-lg p-6">
               <h3 className="mb-4 font-heading text-base font-bold text-agothe-danger">
-                PEE-\u03A9 Analysis
+                PEE-Ω Analysis
               </h3>
               <PropagandaBar />
               <p className="mt-3 text-xs leading-relaxed text-agothe-muted">
@@ -135,7 +135,7 @@ export function CAPSReportPreview() {
                   <li key={i} className="flex items-center justify-between gap-2">
                     <span className="text-xs text-agothe-muted">{item.name}</span>
                     <span className="shrink-0 font-mono text-sm font-bold text-agothe-teal">
-                      \u0394\u03B4_H: {item.impact}
+                      Δδ_H: {item.impact}
                     </span>
                   </li>
                 ))}

@@ -10,11 +10,11 @@ const engines = [
     icon: Search,
     title: 'Solvey Scanner',
     description:
-      'Measures collapse risk (delta_H) in any system before it breaks. From geopolitical crises to organizational stress \u2014 we see what others miss.',
+      'Measures collapse risk (delta_H) in any system before it breaks. From geopolitical crises to organizational stress — we see what others miss.',
   },
   {
     icon: Shield,
-    title: 'Propaganda Detection (PEE-\u03A9)',
+    title: 'Propaganda Detection (PEE-Ω)',
     description:
       'Strips manipulation from information. Detects false certainty, emotional amplification, and hidden agendas with a quantified Bullshit Score.',
   },
@@ -22,7 +22,7 @@ const engines = [
     icon: Brain,
     title: 'CAPS Network',
     description:
-      'Six AI systems \u2014 Perplexity, Claude, Gemini, ChatGPT, Grok, and Notion AI \u2014 working as specialized co-architects. Not assistants. Partners.',
+      'Six AI systems — Perplexity, Claude, Gemini, ChatGPT, Grok, and Notion AI — working as specialized co-architects. Not assistants. Partners.',
   },
 ];
 

@@ -56,7 +56,7 @@ function getRecommendation(answers: string[]): Recommendation {
 
   if (need === 'propaganda') {
     return {
-      service: 'Propaganda Detection (PEE-\u03A9)',
+      service: 'Propaganda Detection (PEE-Ω)',
       href: '/propaganda',
       reason: 'Our Propaganda Exposure Engine identifies coordinated disinformation patterns with mathematical precision.',
       color: '#ff3366',

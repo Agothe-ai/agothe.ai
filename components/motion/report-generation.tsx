@@ -14,7 +14,7 @@ interface Stage {
 const stages: Stage[] = [
   { icon: Database, label: 'Data Ingestion', accent: '#00f0ff', detail: 'Sources analyzed' },
   { icon: Cpu, label: 'AI Processing', accent: '#ffd700', detail: '6 AI systems' },
-  { icon: Activity, label: 'Constraint Analysis', accent: '#ff3366', detail: '\u03B4_H measurement' },
+  { icon: Activity, label: 'Constraint Analysis', accent: '#ff3366', detail: 'δ_H measurement' },
   { icon: FileText, label: 'Synthesis', accent: '#00f0ff', detail: 'MCS coherence' },
   { icon: CheckCircle, label: 'Delivery', accent: '#10b981', detail: 'Report complete' },
 ];
@@ -158,7 +158,7 @@ export function ReportGeneration() {
             />
           </div>
           <p className="mt-1 font-mono text-[10px]" style={{ color: barColor }}>
-            {`\u03B4_H: ${val.toFixed(2)}`}
+            {`δ_H: ${val.toFixed(2)}`}
           </p>
         </div>
       );

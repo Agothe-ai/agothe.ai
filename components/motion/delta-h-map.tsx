@@ -67,7 +67,7 @@ function PulsingHotspot({
         fontFamily="monospace"
         opacity={0.8}
       >
-        {`\u03B4_H: ${spot.deltaH.toFixed(2)}`}
+        {`δ_H: ${spot.deltaH.toFixed(2)}`}
       </text>
     </g>
   );
@@ -191,7 +191,7 @@ export function DeltaHMap() {
             >
               <p className="text-xs font-semibold text-agothe-white">{tooltip.spot.label}</p>
               <p className="font-mono text-xs" style={{ color: tooltip.spot.color }}>
-                {`\u03B4_H: ${tooltip.spot.deltaH.toFixed(2)}`}
+                {`δ_H: ${tooltip.spot.deltaH.toFixed(2)}`}
               </p>
               <p className="mt-0.5 text-[10px] text-agothe-muted">{tooltip.spot.status}</p>
             </div>

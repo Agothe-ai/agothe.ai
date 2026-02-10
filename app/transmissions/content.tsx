@@ -16,14 +16,14 @@ const posts = [
   },
   {
     title: 'Bounce Collapse Symmetry: Why Systems Self-Heal',
-    excerpt: 'When constraint fields collapse past critical \u03B4_H, a symmetry-breaking bounce creates new emergent structures.',
+    excerpt: 'When constraint fields collapse past critical δ_H, a symmetry-breaking bounce creates new emergent structures.',
     date: 'Feb 3, 2026',
     readTime: '12 min',
     tags: ['Systems Theory', 'CRD'],
   },
   {
-    title: '\u03B4_H as a Fundamental Constant: Evidence from 4 Domains',
-    excerpt: 'Cross-domain evidence suggesting \u03B4_H critical thresholds are universal across physical, social, and cognitive systems.',
+    title: 'δ_H as a Fundamental Constant: Evidence from 4 Domains',
+    excerpt: 'Cross-domain evidence suggesting δ_H critical thresholds are universal across physical, social, and cognitive systems.',
     date: 'Jan 28, 2026',
     readTime: '22 min',
     tags: ['Research', 'Mathematics'],

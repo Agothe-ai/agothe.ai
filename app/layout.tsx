@@ -29,13 +29,13 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://agothe.ai'),
   title: {
-    default: 'Agothe \u2014 AI-Powered Research Synthesis & Crisis Intelligence',
+    default: 'Agothe — AI-Powered Research Synthesis & Crisis Intelligence',
     template: '%s | Agothe',
   },
   description:
     '6 AI systems coordinated simultaneously. 200M+ research papers. Intelligence-grade analysis in hours, not weeks.',
   openGraph: {
-    title: 'Agothe \u2014 AI-Powered Research Synthesis & Crisis Intelligence',
+    title: 'Agothe — AI-Powered Research Synthesis & Crisis Intelligence',
     description:
       '6 AI systems coordinated simultaneously. 200M+ research papers. Intelligence-grade analysis in hours, not weeks.',
     url: 'https://agothe.ai',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Agothe \u2014 AI-Powered Research Synthesis & Crisis Intelligence',
+    title: 'Agothe — AI-Powered Research Synthesis & Crisis Intelligence',
     description:
       '6 AI systems coordinated simultaneously. 200M+ research papers. Intelligence-grade analysis in hours, not weeks.',
   },

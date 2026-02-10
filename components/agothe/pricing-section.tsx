@@ -35,9 +35,9 @@ const tiers: PricingTier[] = [
     description: 'Full multi-AI crisis analysis with intervention strategies',
     features: [
       '6 AI systems coordinated simultaneously',
-      'Solvey Scanner + PEE-\u03A9 analysis',
+      'Solvey Scanner + PEE-Ω analysis',
       '5-level Agothean Engine Stack validation',
-      'Quantified intervention strategies (\u03B4_H reduction)',
+      'Quantified intervention strategies (δ_H reduction)',
       'MCS > 0.90 coherence guarantee',
       'Under 4-hour delivery',
     ],
@@ -50,7 +50,7 @@ const tiers: PricingTier[] = [
     price: 'Custom',
     description: 'Ongoing constraint field monitoring for your organization',
     features: [
-      'Real-time \u03B4_H tracking',
+      'Real-time δ_H tracking',
       'Weekly intelligence briefs',
       'Custom alert thresholds',
       'Dedicated CAPS analyst',

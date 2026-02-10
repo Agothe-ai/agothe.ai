@@ -8,26 +8,26 @@ import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
 
 const tiers = [
   {
-    tier: 'Tier 1 \u2014 Foundation',
+    tier: 'Tier 1 — Foundation',
     items: ['Local LLM reasoning (Ollama)', 'File system operations', 'Terminal command execution', 'Base knowledge retrieval'],
   },
   {
-    tier: 'Tier 2 \u2014 Processing',
+    tier: 'Tier 2 — Processing',
     items: ['Multi-model routing', 'Notion API integration', 'Content transformation pipeline', 'Automated scheduling'],
   },
   {
-    tier: 'Tier 3 \u2014 Integration',
+    tier: 'Tier 3 — Integration',
     items: ['CAPS Network coordination', 'Cross-system data sync', 'Codex-as-CMS publishing', 'Webhook orchestration'],
   },
   {
-    tier: 'Tier 4 \u2014 Oracle',
+    tier: 'Tier 4 — Oracle',
     items: ['Self-evolution routines', 'Pattern meta-analysis', 'Framework extension protocols', 'Autonomous research loops'],
   },
 ];
 
 const capabilities = [
   { title: 'Local LLM Reasoning', description: 'On-device inference using Ollama for privacy-sensitive operations, fast iteration, and offline capability.' },
-  { title: 'Notion Integration', description: 'Deep bidirectional sync with Notion \u2014 reads from the Codex, writes analysis outputs, manages knowledge databases.' },
+  { title: 'Notion Integration', description: 'Deep bidirectional sync with Notion — reads from the Codex, writes analysis outputs, manages knowledge databases.' },
   { title: 'Self-Modifying Codebase', description: 'Agothe OS can modify its own configurations, prompts, and routing logic based on performance feedback loops.' },
   { title: 'Multi-AI Routing', description: 'Intelligent routing of tasks to the optimal AI system based on task type, complexity, and required capabilities.' },
   { title: 'File Operations', description: 'Full file system access for reading, writing, transforming, and organizing research artifacts and outputs.' },
@@ -54,7 +54,7 @@ export function OSPageContent() {
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-agothe-muted/80">
               Agothe OS is the internal operating system that powers every service we offer. It
               coordinates local LLM reasoning, file operations, Notion integration, multi-AI routing,
-              and self-modifying codebase evolution \u2014 all running autonomously.
+              and self-modifying codebase evolution — all running autonomously.
             </p>
           </AnimatedItem>
         </AnimatedSection>
