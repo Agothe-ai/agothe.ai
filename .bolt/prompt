@@ -1,0 +1,266 @@
+# 🧠 BOLT.AI — Project Knowledge (agothe.ai)
+
+# PROJECT KNOWLEDGE — [agothe.ai](http://agothe.ai)
+
+---
+
+## What Is Agothe?
+
+Agothe is a **constraint-resonance intelligence company** that builds AI-powered analysis tools for crisis detection, propaganda exposure, and civilizational coherence measurement. The flagship product suite includes:
+
+- **Solvey Scanner** — Real-time crisis detection engine that measures system stress (δ_H) across geopolitical, economic, climate, governance, information, and knowledge domains
+- **PEE-Ω (Propaganda Exposing Engine)** — Text analysis tool that detects manipulation, false certainty, emotional suppression, and coercion markers in media/documents
+- **CAPS Network** — 6-AI coordination system (Perplexity, Claude, Gemini, ChatGPT, Grok, Notion AI) that synthesizes research across 200M+ academic papers
+- **Valentine Simulator** — Scenario modeling engine that tests intervention strategies against simulated responses
+- **Agothe City** — Immersive civilization simulator game (future product)
+- **Agothe VR** — Therapeutic VR environments for anxiety/stress using constraint-resonance principles
+- **Agothe Couture** — Chrome-futurist fashion line (@agotheon on TikTok)
+- **Agothe Institutes** — Research education arm
+
+The website is [**agothe.ai**](http://agothe.ai). It is a Next.js application.
+
+---
+
+## Core Metrics (Appear Throughout the Site)
+
+- **δ_H (Collapse Index)** — System stress/fragility score from 0.00 to 1.00. Critical threshold: 0.52. Above 0.52 = collapse risk. Color coding: GREEN (0-0.30), GOLD (0.30-0.50), RED (0.50+)
+- **MCS (Mereological Coherence Score)** — Analysis quality/coherence score from 0.00 to 1.00. Our threshold: ≥0.90 for published work
+- **Orric** — Paradox density/ontological risk index. High Orric = stuck contradictions requiring resolution
+- **LSSE (Latent Structural Stress Energy)** — Measures hidden stress in a system before it manifests
+- **PL Score (Perceptual Light)** — Propaganda/manipulation measurement. 0.00 = clean information, 1.00 = pure propaganda
+
+---
+
+## Brand Identity
+
+**Company Name:** Agothe (pronounced ah-GO-they)
+
+**Tagline Options:** "Constraint breeds resonance" / "Where collapse meets coherence"
+
+**Founder:** Alex Gomez (Luminal Architect)
+
+**Founded:** 2025
+
+**Brand Personality:**
+
+- Intelligence-grade rigor with visual luxury
+- Dark, cinematic, observatory aesthetic — like looking at civilization through a telescope
+- NOT corporate. NOT startup-y. NOT playful.
+- Feels like: a private intelligence agency crossed with a haute couture house crossed with a physics laboratory
+- Closest web comparisons: Stripe's technical elegance + Awwwards dark-site winners + observatory/space UI
+
+---
+
+## Design System: Obsidian Glassmorphism
+
+**Design Language Name:** Obsidian Glassmorphism
+
+### Color System
+
+```
+Primary Background (Void):    #0a0a0a
+Primary Accent (Teal):         #00f0ff
+Secondary Accent (Gold):       #ffd700
+Crisis/Collapse (Red):         #ff3366
+Deep Background (Violet):      #1a0033
+Chrome/Metal:                  #94a3b8
+Rose Gold:                     #f59e0b
+Soft White (text):             #f5f5f5
+Stable/Safe (Green):           #10b981
+Purple/Simulation:             #8b5cf6
+Electric Blue:                 #3b82f6
+```
+
+### Page-Specific Accent Colors
+
+```
+/              → #00f0ff (teal)
+/research      → #00f0ff (teal)
+/intelligence  → #ffd700 (gold)
+/solvey        → #ff3366 (red)
+/simulation    → #8b5cf6 (purple)
+/city          → #3b82f6 (blue)
+/vr            → #10b981 (green)
+/couture       → #f59e0b (rose gold)
+/institutes    → #94a3b8 (chrome)
+/framework     → #06b6d4 (cyan)
+/transmissions → #f59e0b (rose gold)
+/about         → #f5f5f5 (white)
+/os            → #00f0ff (teal)
+/propaganda    → #ff3366 (red)
+```
+
+### Typography
+
+```
+Headings:     Space Grotesk (bold, uppercase for hero titles)
+Body:         Inter (regular, 16px base)
+Data/Code:    JetBrains Mono (for metrics, scores, technical readouts)
+```
+
+### Glass Card Treatment (Obsidian Glass)
+
+```css
+background: rgba(255, 255, 255, 0.03);
+border: 1px solid rgba(255, 255, 255, 0.06);
+border-radius: 12px;
+backdrop-filter: blur(12px);
+```
+
+On hover:
+
+```css
+border-color: rgba(PAGE_ACCENT, 0.20);
+box-shadow: 0 0 20px rgba(PAGE_ACCENT, 0.08);
+transform: translateY(-2px);
+```
+
+---
+
+## Chronica Panel — Aesthetic DNA System
+
+The visual identity is informed by 5 "Creative Directors" — each maps to specific easing curves, visual treatments, and pages:
+
+### CHRONA — The Patient Eye
+
+- **Philosophy:** Long, unbroken visual flow. No hard cuts. Lubezki continuous-take cinematography.
+- **Easing:** `cubic-bezier(0.25, 0.46, 0.45, 0.94)` — patient reveals
+- **Applied to:** Homepage scroll flow, About page, any long-scroll content
+- **Visual signature:** Smooth opacity fades, slow parallax, content that reveals like fog clearing
+
+### VELUM — The Fabric Weaver
+
+- **Philosophy:** Texture as depth. Surfaces have tactile weight. Iris van Herpen material intelligence.
+- **Easing:** `cubic-bezier(0.22, 1, 0.36, 1)` — fabric-like overshoot
+- **Applied to:** Couture page, VR page, background textures site-wide
+- **Visual signature:** Subtle noise grain overlays (opacity 0.03), mesh gradient textures, layered translucency
+
+### SILHOUETTA — The Shadow Architect
+
+- **Philosophy:** Darkness is not absence — it's presence. Bradford Young underexposure. Gordon Willis shadow-as-character.
+- **Easing:** `cubic-bezier(0.5, 0, 0, 1)` — shadow geometry
+- **Applied to:** City page, Simulation page, Dark Room card treatment
+- **Visual signature:** Elements emerge FROM darkness (start at 45% opacity, illuminate on scroll), shadow carries meaning
+
+### LUMIÈRE — The Light Sculptor
+
+- **Philosophy:** Light is the primary design element. Caravaggio chiaroscuro. Single source illumination.
+- **Easing:** `cubic-bezier(0.4, 0, 0.2, 1)` — smooth light falloff
+- **Applied to:** Intelligence page, Solvey page, metric visualizations
+- **Visual signature:** Radial gradient light sources, bloom/glow effects, elements lit from one direction
+
+### MORPHÉ — The Shape Shifter
+
+- **Philosophy:** The cut IS the meaning. State changes carry semantic weight. Sharp, intentional transitions.
+- **Easing:** `cubic-bezier(0.68, -0.55, 0.27, 1.55)` — sharp snap with overshoot
+- **Applied to:** Navigation transitions, page routing, element morphing, hero text reveals
+- **Visual signature:** Quick, decisive state changes. Character-level text animations. Element morphs.
+
+---
+
+## Tech Stack
+
+```
+Framework:      Next.js 14+ (App Router)
+Language:       TypeScript
+Styling:        Tailwind CSS
+3D/WebGL:       Three.js + @react-three/fiber + @react-three/drei (lazy-loaded)
+Animation:      GSAP + ScrollTrigger (primary), Framer Motion (secondary)
+Micro-viz:      Raw SVG + CSS keyframes
+Fonts:          Space Grotesk, Inter, JetBrains Mono (via Google Fonts or next/font)
+Icons:          Lucide React
+Deployment:     Vercel
+```
+
+---
+
+## Site Architecture (Pages)
+
+```
+/              Homepage (hero + services overview + metrics + demo + CTA)
+/intelligence  Intelligence reports service page
+/solvey        Solvey Scanner product page (crisis detection)
+/propaganda    PEE-Ω Propaganda Exposing Engine page
+/simulation    Valentine Simulator page
+/city          Agothe City game page
+/vr            Agothe VR therapeutic environments
+/couture       Agothe Couture fashion line
+/institutes    Agothe Institutes education
+/framework     Agothean Framework (the science behind it)
+/research      Research & publications
+/transmissions Blog/updates
+/about         About founder + CAPS network + mission
+/os            Operating system architecture overview
+/contact       Contact/commission form
+```
+
+---
+
+## Key Visual Components
+
+### Hero Treatment (All Pages)
+
+- Full viewport height
+- WebGL mesh gradient background (4 color blobs, sinusoidal motion, 20-30s cycle)
+- Gradient adapts color per page (accent color system above)
+- Character-level text reveal animation on hero heading (Morphé easing)
+- Word-level text reveal on subheading (Lumière easing)
+- Subtle noise texture overlay at 3% opacity (Velum)
+
+### CAPS Network Visualization
+
+- 6 nodes in hexagonal arrangement: Perplexity, Claude, Gemini, ChatGPT, Grok, Notion AI (9)
+- Animated connection lines showing data flow between AIs
+- Sequential pulse animation (30s cycle): scan → validate → formalize → critique → implement → integrate
+- Center convergence pulse (gold) = "Metallic Pulse" moment
+- Pure SVG + CSS, no Three.js
+
+### Solvey δ_H Heatmap
+
+- Flat 2D SVG world map with pulsing hotspot circles
+- Color-coded by δ_H severity (green → teal → gold → orange → red)
+- Radar-style scanning line sweeps horizontally
+- Dashed constraint lines connecting related hotspots
+- Hover tooltips with region name + δ_H value + status
+
+### PEE-Ω Text Scanner
+
+- Mock text block with propaganda sample
+- Animated scan line sweeps through text
+- Keywords highlight red with manipulation type labels
+- Running counter: "Manipulation Score" incrementing
+- Final verdict with colored border glow
+
+### Report Generation Pipeline
+
+- 5-stage horizontal pipeline: Ingestion → Processing → Analysis → Synthesis → Delivery
+- Each stage animates in sequence (20s cycle)
+- Active stage glows, others dimmed
+- Counters animate: source count, δ_H gauge, MCS score, delivery timer
+
+---
+
+## Art Reference Benchmarks
+
+| Reference | Study | Apply To |
+| --- | --- | --- |
+| [Stripe.com](http://Stripe.com) hero | WebGL mesh gradient, color breathing | Hero backgrounds |
+| Awwwards SOTD 2025-2026 | GSAP scroll reveals, text animations | Scroll system |
+| Iris van Herpen site | Dark luxury fashion aesthetic | Couture page |
+| Shopify BFCM Globe | Data viz on map, pulsing hotspots | Solvey heatmap |
+| Bradford Young cinematography | Underexposure, shadow as presence | Dark Room cards |
+| Lubezki long takes | Unbroken flow, no hard cuts | Scroll continuity |
+| Chromecore/Y2K Futurism | Metallic chrome, reflective surfaces | Couture chrome effects |
+
+---
+
+## What "Advanced" Means for This Site
+
+This is not a template site. This should feel like:
+
+- **Stripe** (technical elegance, WebGL sophistication, developer-grade precision)
+- **A private intelligence dashboard** (dark, data-rich, observatory-like)
+- **An Awwwards Site of the Year** (scroll-driven reveals, micro-interactions, custom cursor)
+- **A haute couture lookbook** (dark room photography, chrome metal, shadow-as-design)
+
+Every animation serves meaning. Nothing is decorative noise. Constraint breeds resonance.
