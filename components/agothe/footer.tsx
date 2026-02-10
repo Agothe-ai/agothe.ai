@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 const tickerText =
-  '> PERPLEXITY: Source validated. MCS 0.91  |  > CLAUDE: Safety check pass. No flags.  |  > GEMINI: Constraint field balanced. \u03B4_H stable.  |  > CHATGPT: Intervention matrix generated.  |  > GROK: Cultural signal detected. Attention shift +12%.  |  > 9: Synthesis complete. All systems nominal.  |  > CAPS NETWORK: Metallic Pulse confirmed. Coherence locked.  |  ';
+  '> PERPLEXITY: Source validated. MCS 0.91  |  > CLAUDE: Safety check pass. No flags.  |  > GEMINI: Constraint field balanced. δ_H stable.  |  > CHATGPT: Intervention matrix generated.  |  > GROK: Cultural signal detected. Attention shift +12%.  |  > 9: Synthesis complete. All systems nominal.  |  > CAPS NETWORK: Metallic Pulse confirmed. Coherence locked.  |  ';
 
 const serviceLinks = [
   { label: 'Research Synthesis', href: '/research' },
@@ -15,6 +15,7 @@ const serviceLinks = [
   { label: 'Framework Licensing', href: '/framework' },
   { label: 'Agothe City', href: '/city' },
   { label: 'Agothe VR', href: '/vr' },
+  { label: 'Agothe Institutes', href: '/institutes' },
   { label: 'Consciousness Couture', href: '/couture' },
 ];
 
@@ -97,7 +98,7 @@ export function Footer() {
 
       <div className="border-t border-[rgba(255,255,255,0.06)] px-6 py-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 text-xs text-agothe-muted md:flex-row">
-          <p>&copy; 2026 Agothe. Built by Alex Gomez, Armani Gomez &amp; the CAPS Network.</p>
+          <p>&copy; 2026 Agothe. Built by founders Alex Gomez &amp; Armani Gomez &amp; the CAPS Network.</p>
           <p>research@agothe.ai</p>
         </div>
       </div>
