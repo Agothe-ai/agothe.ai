@@ -161,9 +161,16 @@ function MobileMenu({
             ))}
 
             <Link
+              href="/demo"
+              onClick={onClose}
+              className="mt-4 block rounded-full border border-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-teal"
+            >
+              Schedule Demo
+            </Link>
+            <Link
               href="/contact"
               onClick={onClose}
-              className="mt-4 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-bg"
+              className="mt-3 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-bg"
             >
               Commission Report
             </Link>
@@ -207,6 +214,12 @@ export function Navigation() {
           </nav>
 
           <div className="flex items-center gap-4">
+            <Link
+              href="/demo"
+              className="hidden rounded-full border border-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-teal transition-all hover:bg-[rgba(0,240,255,0.05)] lg:inline-flex"
+            >
+              Schedule Demo
+            </Link>
             <Link
               href="/contact"
               className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-bg transition-shadow hover:shadow-[0_0_20px_rgba(0,240,255,0.3)] lg:inline-flex"

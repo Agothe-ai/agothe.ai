@@ -109,13 +109,13 @@ export function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
-            href="#demo"
+            href="/demo"
             className="inline-flex items-center rounded-full bg-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-bg transition-shadow hover:shadow-[0_0_30px_rgba(0,240,255,0.3)]"
           >
-            See Live Demo
+            Schedule Demo
           </a>
           <a
-            href="#pricing"
+            href="/contact"
             className="inline-flex items-center rounded-full border border-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-teal transition-all hover:bg-agothe-teal/10"
           >
             Commission a Report
