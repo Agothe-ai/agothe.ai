@@ -4,13 +4,15 @@ import { useRef, useEffect } from 'react';
 import { Counter } from './counter';
 import { LiveStatus } from './live-status';
 import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+import { MetricViz } from '@/components/motion/metric-viz';
+import { MagneticButton } from '@/components/motion/magnetic-button';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const metrics = [
-  { value: 0.9, prefix: 'MCS > ', suffix: '0', decimals: 1, label: 'Analysis Coherence' },
-  { value: 2, prefix: '< ', suffix: '', decimals: 0, label: 'Average Delivery', unit: 'Hours', countDown: true },
-  { value: 6, prefix: '', suffix: '', decimals: 0, label: 'Coordinated Network', unit: 'AI Systems' },
-  { value: 200, prefix: '', suffix: 'M+', decimals: 0, label: 'Research Access', unit: 'Papers' },
+  { value: 0.9, prefix: 'MCS > ', suffix: '0', decimals: 1, label: 'Analysis Coherence', viz: 'coherence' as const },
+  { value: 2, prefix: '< ', suffix: '', decimals: 0, label: 'Average Delivery', unit: 'Hours', countDown: true, viz: 'speed' as const },
+  { value: 6, prefix: '', suffix: '', decimals: 0, label: 'Coordinated Network', unit: 'AI Systems', viz: 'network' as const },
+  { value: 200, prefix: '', suffix: 'M+', decimals: 0, label: 'Research Access', unit: 'Papers', viz: 'research' as const },
 ];
 
 export function Hero() {
@@ -108,18 +110,22 @@ export function Hero() {
           data-hero-item=""
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <a
+          <MagneticButton
             href="#demo"
-            className="inline-flex items-center rounded-full bg-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-bg transition-shadow hover:shadow-[0_0_30px_rgba(0,240,255,0.3)]"
+            accentColor="#00f0ff"
+            className="inline-flex items-center rounded-full bg-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-bg"
+            aria-label="See Live Demo"
           >
             See Live Demo
-          </a>
-          <a
+          </MagneticButton>
+          <MagneticButton
             href="#pricing"
-            className="inline-flex items-center rounded-full border border-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-teal transition-all hover:bg-agothe-teal/10"
+            accentColor="#00f0ff"
+            className="inline-flex items-center rounded-full border border-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-teal"
+            aria-label="Commission a Report"
           >
             Commission a Report
-          </a>
+          </MagneticButton>
         </div>
 
         <p
@@ -144,6 +150,7 @@ export function Hero() {
                   : ''
               }`}
             >
+              <MetricViz type={m.viz} className="mb-2" />
               <div className="text-3xl text-agothe-white md:text-4xl">
                 <Counter
                   target={m.value}

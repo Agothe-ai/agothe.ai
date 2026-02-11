@@ -3,6 +3,7 @@
 import { AnimatedSection, AnimatedItem } from './animated-section';
 import { SectionHeading } from './section-heading';
 import { ObsidianCard } from './obsidian-card';
+import { CAPSNetwork } from '@/components/motion/caps-network';
 
 const aiSystems = [
   {
@@ -39,6 +40,10 @@ export function CapsNetworkSection() {
           title="Not one AI. Six."
           subtitle="Each system specializes. Together, they see what no single model can."
         />
+
+        <AnimatedItem>
+          <CAPSNetwork className="mb-12" />
+        </AnimatedItem>
 
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
           {aiSystems.map((ai) => (
