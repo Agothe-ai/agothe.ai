@@ -1,11 +1,16 @@
 'use client';
 
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatedSection, AnimatedItem } from '@/components/agothe/animated-section';
 import { ObsidianCard } from '@/components/agothe/obsidian-card';
 import { SectionHeading } from '@/components/agothe/section-heading';
 import { CapsNetworkSection } from '@/components/agothe/caps-network-section';
 import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+
+const CAPSInteractive = lazy(() =>
+  import('@/components/motion/caps-interactive').then((mod) => ({ default: mod.CAPSInteractive }))
+);
 
 const founders = [
   {
@@ -118,6 +123,10 @@ export function AboutPageContent() {
       </section>
 
       <CapsNetworkSection />
+
+      <Suspense fallback={<div className="h-96 bg-agothe-bg" />}>
+        <CAPSInteractive />
+      </Suspense>
 
       <section className="px-6 py-24 md:py-32">
         <AnimatedSection className="mx-auto max-w-6xl">

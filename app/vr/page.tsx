@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ServicePage } from '@/components/agothe/service-page-template';
+import { VREnvironmentMorph } from '@/components/motion/vr-environment-morph';
 
 export const metadata: Metadata = {
   title: 'Agothe VR \u2014 Therapeutic Worldbuilding',
@@ -18,7 +19,8 @@ export default function VRPage() {
       ctaHref="/contact"
       status="development"
       waitlistMode
-      problemTitle="Therapy wasn\u2019t built for how some minds work"
+      heroContent={<VREnvironmentMorph />}
+      problemTitle="Therapy wasn&rsquo;t built for how some minds work"
       problemItems={[
         'Traditional therapeutic environments are one-size-fits-all',
         'Neurodivergent sensory needs are rarely considered in design',

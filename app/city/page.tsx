@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ServicePage } from '@/components/agothe/service-page-template';
+import { CityParallax } from '@/components/motion/city-parallax';
 
 export const metadata: Metadata = {
   title: 'Agothe City \u2014 Cognitive Navigation',
@@ -18,6 +19,7 @@ export default function CityPage() {
       ctaHref="/contact"
       status="development"
       waitlistMode
+      heroContent={<CityParallax />}
       problemTitle="The mind has no map"
       problemItems={[
         'Knowledge exists in fragments without spatial relationships',

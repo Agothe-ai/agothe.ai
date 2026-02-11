@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import { Hero } from '@/components/agothe/hero';
 import { ProblemSection } from '@/components/agothe/problem-section';
 import { EnginesSection } from '@/components/agothe/engines-section';
@@ -9,7 +10,14 @@ import { CapsNetworkSection } from '@/components/agothe/caps-network-section';
 import { AboutSection } from '@/components/agothe/about-section';
 import { ServiceQuiz } from '@/components/agothe/service-quiz';
 import { EmailCapture } from '@/components/agothe/email-capture';
-import { ReportGeneration } from '@/components/motion/report-generation';
+
+const ReportGeneration = dynamic(
+  () => import('@/components/motion/report-generation').then((mod) => ({ default: mod.ReportGeneration })),
+  {
+    loading: () => <div className="h-64 bg-agothe-bg" />,
+    ssr: false,
+  }
+);
 
 export default function Home() {
   return (
