@@ -90,7 +90,7 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-blue-50 hover:text-agothe-teal"
+                className="block rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-slate-50 hover:text-agothe-teal"
               >
                 {item.label}
               </Link>
@@ -151,7 +151,7 @@ function MobileMenu({
                       key={item.href}
                       href={item.href}
                       onClick={onClose}
-                      className="block rounded-md px-3 py-2.5 text-base text-agothe-white transition-colors hover:bg-blue-50"
+                      className="block rounded-md px-3 py-2.5 text-base text-agothe-white transition-colors hover:bg-slate-50"
                     >
                       {item.label}
                     </Link>
@@ -163,14 +163,14 @@ function MobileMenu({
             <Link
               href="/demo"
               onClick={onClose}
-              className="mt-4 block rounded-full border border-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-teal transition-colors hover:bg-blue-50"
+              className="mt-4 block rounded-full border border-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-teal transition-colors hover:bg-slate-50"
             >
               Schedule Demo
             </Link>
             <Link
               href="/contact"
               onClick={onClose}
-              className="mt-3 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-600"
+              className="mt-3 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-slate-700"
             >
               Commission Report
             </Link>
@@ -216,13 +216,13 @@ export function Navigation() {
           <div className="flex items-center gap-4">
             <Link
               href="/demo"
-              className="hidden rounded-full border border-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-teal transition-all hover:bg-blue-50 lg:inline-flex"
+              className="hidden rounded-full border border-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-teal transition-all hover:bg-slate-50 lg:inline-flex"
             >
               Schedule Demo
             </Link>
             <Link
               href="/contact"
-              className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-blue-200 lg:inline-flex"
+              className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-slate-200 lg:inline-flex"
             >
               Commission Report
             </Link>
