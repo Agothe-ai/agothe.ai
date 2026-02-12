@@ -4,8 +4,6 @@
  * Research-backed smooth scroll and kinetic effects
  */
 
-import type { GSAPTweenVars } from 'gsap';
-
 // ScrollTrigger configuration presets
 export const scrollTriggerPresets = {
   // Fade in when element enters viewport
@@ -226,19 +224,19 @@ export const snapConfig = {
 } as const;
 
 // Scroll velocity tracking
-export function getScrollVelocity(): number {
+export function getScrollVelocity(): () => number {
   let lastScrollTop = 0;
   let lastTimestamp = 0;
-  
+
   return () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const timestamp = Date.now();
     const timeDiff = timestamp - lastTimestamp;
     const velocity = (scrollTop - lastScrollTop) / (timeDiff || 1);
-    
+
     lastScrollTop = scrollTop;
     lastTimestamp = timestamp;
-    
+
     return velocity;
   };
 }

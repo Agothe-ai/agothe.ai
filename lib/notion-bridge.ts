@@ -22,7 +22,7 @@ export class NotionBridge {
     this.client = new ApiClient({
       baseURL: 'https://api.notion.com/v1',
       headers: {
-        'Authorization': `Bearer \${config.apiKey}`,
+        'Authorization': `Bearer ${config.apiKey}`,
         'Notion-Version': config.version || '2022-06-28',
         'Content-Type': 'application/json',
       },
@@ -30,7 +30,7 @@ export class NotionBridge {
   }
 
   async queryDatabase(databaseId: string, filter?: any) {
-    return this.client.post(\`/databases/\${databaseId}/query\`, { filter });
+    return this.client.post(`/databases/${databaseId}/query`, { filter });
   }
 
   async createPage(parentDatabaseId: string, properties: any) {
@@ -41,7 +41,7 @@ export class NotionBridge {
   }
 
   async updatePage(pageId: string, properties: any) {
-    return this.client.patch(\`/pages/\${pageId}\`, { properties });
+    return this.client.patch(`/pages/${pageId}`, { properties });
   }
 
   // Capability 8: Bidirectional Notion Sync

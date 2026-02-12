@@ -1,7 +1,7 @@
 // Advanced form validation system with custom rules and real-time feedback
 
 export interface ValidationRule {
-  validate: (value: any) => boolean;
+  validate: (value: any, form?: any) => boolean;
   message: string;
 }
 

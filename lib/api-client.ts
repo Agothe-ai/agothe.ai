@@ -214,6 +214,15 @@ export class ApiClient {
     return response.data;
   }
 
+  async patch<T = any>(endpoint: string, data?: any, options?: RequestInit): Promise<T> {
+    const response = await this.request<T>(endpoint, {
+      ...options,
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    });
+    return response.data;
+  }
+
   async delete<T = any>(endpoint: string, options?: RequestInit): Promise<T> {
     const response = await this.request<T>(endpoint, {
       ...options,

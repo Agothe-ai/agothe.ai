@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { queryDeepSeek } from '@/lib/deepseek';
+import { conversationDeepSeek, streamDeepSeek, type DeepSeekMessage } from '@/lib/deepseek';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,21 +12,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const response = await queryDeepSeek({
-      messages,
-      stream,
-    });
-
     if (stream) {
       // Return streaming response
       const encoder = new TextEncoder();
       const customReadable = new ReadableStream({
         async start(controller) {
-          for await (const chunk of response) {
-            const text = chunk.choices[0]?.delta?.content || '';
-            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text })}\n\n`));
+          try {
+            await streamDeepSeek({
+              messages: messages as DeepSeekMessage[],
+              onChunk: (text: string) => {
+                controller.enqueue(encoder.encode(`data: ${JSON.stringify({ text })}\n\n`));
+              },
+            });
+            controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+            controller.close();
+          } catch (error) {
+            controller.error(error);
           }
-          controller.close();
         },
       });
 
@@ -40,6 +42,10 @@ export async function POST(request: NextRequest) {
     }
 
     // Return non-streaming response
+    const response = await conversationDeepSeek({
+      messages: messages as DeepSeekMessage[],
+    });
+
     return NextResponse.json({
       message: response.choices[0].message.content,
       usage: response.usage,

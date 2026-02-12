@@ -40,9 +40,7 @@ export class AgotheDocProcessor {
    * Synthesize multiple research papers into a single Codex entry
    */
   async synthesizeResearch(docs: DocumentAnalysis[]): Promise<string> {
-    return docs.map(d => `[${d.title}]: ${d.synthesis}`).join('
----
-');
+    return docs.map(d => `[${d.title}]: ${d.synthesis}`).join('\n---\n');
   }
 }
 
