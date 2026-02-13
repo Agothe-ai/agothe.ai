@@ -5,6 +5,7 @@ import { Navigation } from '@/components/agothe/navigation';
 import { Footer } from '@/components/agothe/footer';
 import { ScrollProgress } from '@/components/motion/scroll-progress';
 import { ConsciousnessCursor } from '@/components/motion/consciousness-cursor';
+import { SpatialBackdrop } from '@/components/motion/spatial-backdrop';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -71,6 +72,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ScrollProgress />
+        <SpatialBackdrop />
         <ConsciousnessCursor />
         <Navigation />
         <div id="main-content">{children}</div>
