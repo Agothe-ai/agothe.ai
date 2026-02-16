@@ -16,12 +16,14 @@ const config: Config = {
       },
       colors: {
         agothe: {
-          bg: '#FFFFFF',
-          teal: '#64748b',
-          gold: '#94a3b8',
+          void: '#0a0a0a',
+          bg: '#0a0a0a',
+          teal: '#00f0ff',
+          gold: '#ffd700',
           danger: '#ef4444',
-          white: '#0f172a',
+          white: '#ffffff',
           muted: '#64748b',
+          navy: '#0a1628',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

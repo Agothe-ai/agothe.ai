@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import { Navigation } from '@/components/agothe/navigation';
 import { Footer } from '@/components/agothe/footer';
 import { ScrollProgress } from '@/components/motion/scroll-progress';
@@ -68,7 +69,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-body antialiased">
+      <body className="bg-agothe-void text-agothe-white font-body antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-agothe-teal focus:px-4 focus:py-2 focus:text-agothe-bg"
