@@ -1,5 +1,2 @@
 [build]
-command = "npm run build"
-
-[[plugins]]
-package = "@netlify/plugin-nextjs"
+base="Add Default publish dist correction` Shall replace blocks etc).
