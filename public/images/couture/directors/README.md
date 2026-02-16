@@ -1,6 +1,6 @@
-# Chronica Directors
+# Couture Directors
 
-Drop Chronica director portraits (.webp format) into this directory.
+Drop Couture director portraits (.webp format) into this directory.
 
 ## Required Files (5 directors):
 - `director-aria-voss.webp` — Director of Constraint Aesthetics
