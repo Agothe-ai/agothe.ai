@@ -85,15 +85,22 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
             transition={{ duration: 0.15 }}
             className="obsidian-glass-static absolute left-0 top-full z-50 mt-2 min-w-[280px] rounded-lg p-2"
           >
-            {group.items.map((item) => (
-              <Link
+            {group.items.map((item, i) => (
+              <motion.div
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="block rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-slate-50 hover:text-agothe-teal"
               >
-                {item.label}
-              </Link>
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-[rgba(0,240,255,0.05)] hover:text-agothe-white"
+                >
+                  <span className="block h-1 w-1 shrink-0 rounded-full bg-agothe-teal/50" />
+                  {item.label}
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         )}

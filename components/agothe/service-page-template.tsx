@@ -40,6 +40,7 @@ export interface ServicePageProps {
   accentColor?: string;
   children?: React.ReactNode;
   heroOverride?: 'chrome';
+  heroContent?: React.ReactNode;
 }
 
 function FaqAccordion({ items }: { items: FaqItem[] }) {
@@ -94,6 +95,7 @@ export function ServicePage(props: ServicePageProps) {
 
   return (
     <main className="pt-20">
+      {props.heroContent}
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
         {props.heroOverride === 'chrome' ? <ChromeHeroOverlay /> : <MeshGradientHero accentColor={accent} />}
         <div

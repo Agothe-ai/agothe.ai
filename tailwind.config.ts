@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['var(--font-space-grotesk)', 'sans-serif'],
-        body: ['var(--font-inter)', 'sans-serif'],
-        mono: ['var(--font-jetbrains-mono)', 'monospace'],
+        heading: ['"Space Grotesk"', 'var(--font-space-grotesk)', 'sans-serif'],
+        body: ['"Inter"', 'var(--font-inter)', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'var(--font-jetbrains-mono)', 'monospace'],
       },
       colors: {
         agothe: {

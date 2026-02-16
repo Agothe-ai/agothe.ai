@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Database, Cpu, Activity, FileText, CheckCircle } from 'lucide-react';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
+import { useDeviceCapability } from '@/hooks/use-device-capability';
 
 interface Stage {
   icon: typeof Database;
@@ -14,7 +15,7 @@ interface Stage {
 const stages: Stage[] = [
   { icon: Database, label: 'Data Ingestion', accent: '#00f0ff', detail: 'Sources analyzed' },
   { icon: Cpu, label: 'AI Processing', accent: '#ffd700', detail: '6 AI systems' },
-  { icon: Activity, label: 'Constraint Analysis', accent: '#ff3366', detail: '\u03B4_H measurement' },
+  { icon: Activity, label: 'Constraint Analysis', accent: '#ff3366', detail: 'δ_H measurement' },
   { icon: FileText, label: 'Synthesis', accent: '#00f0ff', detail: 'MCS coherence' },
   { icon: CheckCircle, label: 'Delivery', accent: '#10b981', detail: 'Report complete' },
 ];
@@ -29,6 +30,7 @@ function lerp(a: number, b: number, t: number) {
 
 export function ReportGeneration() {
   const reducedMotion = useReducedMotion();
+  const capability = useDeviceCapability();
   const [activeStage, setActiveStage] = useState(0);
   const [progress, setProgress] = useState(0);
   const [stageValues, setStageValues] = useState({
@@ -36,12 +38,33 @@ export function ReportGeneration() {
     litAIs: 0,
     currentAI: '',
     deltaH: 0,
+    deltaHColor: '#00f0ff',
     mcs: 0,
     delivered: false,
     timer: '',
+    celebrationPulse: false,
+    docPieces: 0,
   });
   const frameRef = useRef<number>(0);
   const startRef = useRef<number>(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // IntersectionObserver — only animate when within 200px of viewport
+  useEffect(() => {
+    if (reducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [reducedMotion]);
 
   const animate = useCallback((now: number) => {
     if (!startRef.current) startRef.current = now;
@@ -60,9 +83,12 @@ export function ReportGeneration() {
       litAIs: 0,
       currentAI: '',
       deltaH: 0,
+      deltaHColor: '#00f0ff' as string,
       mcs: 0,
       delivered: false,
       timer: '',
+      celebrationPulse: false,
+      docPieces: 0,
     };
 
     if (stageIdx === 0) {
@@ -76,18 +102,25 @@ export function ReportGeneration() {
       values.sources = 287;
       values.litAIs = 6;
       values.deltaH = lerp(0, 0.76, stageProgress);
+      const dh = values.deltaH;
+      values.deltaHColor = dh > 0.5 ? '#ff3366' : dh > 0.3 ? '#ffd700' : '#00f0ff';
     } else if (stageIdx === 3) {
       values.sources = 287;
       values.litAIs = 6;
       values.deltaH = 0.76;
+      values.deltaHColor = '#ff3366';
       values.mcs = lerp(0, 0.91, stageProgress);
+      values.docPieces = Math.min(Math.floor(stageProgress * 6), 5);
     } else {
       values.sources = 287;
       values.litAIs = 6;
       values.deltaH = 0.76;
+      values.deltaHColor = '#ff3366';
       values.mcs = 0.91;
+      values.docPieces = 5;
       values.delivered = stageProgress > 0.3;
       values.timer = '1.8 hours';
+      values.celebrationPulse = stageProgress > 0.5 && stageProgress < 0.9;
     }
 
     setStageValues(values);
@@ -103,16 +136,21 @@ export function ReportGeneration() {
         litAIs: 6,
         currentAI: '',
         deltaH: 0.76,
+        deltaHColor: '#ff3366',
         mcs: 0.91,
         delivered: true,
         timer: '1.8 hours',
+        celebrationPulse: false,
+        docPieces: 5,
       });
       return;
     }
 
+    if (!isVisible) return;
+
     frameRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frameRef.current);
-  }, [reducedMotion, animate]);
+  }, [reducedMotion, animate, isVisible]);
 
   function renderStageContent(idx: number) {
     const isActive = idx === activeStage;
@@ -120,26 +158,65 @@ export function ReportGeneration() {
 
     if (idx === 0) {
       return (
-        <p className="mt-2 font-mono text-xs" style={{ color: isActive || isPast ? '#00f0ff' : 'rgba(255,255,255,0.3)' }}>
-          {isPast || isActive ? stageValues.sources : 0}
-          <span className="text-agothe-muted"> sources</span>
-        </p>
+        <div className="mt-3">
+          <p className="font-mono text-xs transition-colors duration-300" style={{ color: isActive || isPast ? '#00f0ff' : 'rgba(255,255,255,0.3)' }}>
+            Sources analyzed: <span className="font-bold">{isPast ? 287 : isActive ? stageValues.sources : 0}</span>
+          </p>
+          {isActive && (
+            <div className="mt-2 flex gap-0.5">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-1 w-1 rounded-full"
+                  style={{
+                    backgroundColor: '#00f0ff',
+                    opacity: ((stageValues.sources / 287) * 8) > i ? 0.8 : 0.1,
+                    transition: 'opacity 0.15s',
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       );
     }
     if (idx === 1) {
       return (
-        <div className="mt-2 flex gap-1">
-          {AI_NAMES.map((_, i) => (
-            <div
-              key={i}
-              className="h-1.5 w-1.5 rounded-full transition-colors duration-300"
-              style={{
-                backgroundColor: (isActive && i < stageValues.litAIs) || isPast
-                  ? '#ffd700'
-                  : 'rgba(255,255,255,0.1)',
-              }}
-            />
-          ))}
+        <div className="mt-3">
+          <div className="flex flex-wrap gap-1">
+            {AI_NAMES.map((name, i) => {
+              const isLit = (isActive && i < stageValues.litAIs) || isPast;
+              const isCurrent = isActive && name === stageValues.currentAI;
+              return (
+                <div
+                  key={i}
+                  className="relative flex items-center gap-1"
+                >
+                  <div
+                    className="h-2 w-2 rounded-full transition-all duration-300"
+                    style={{
+                      backgroundColor: isLit ? '#ffd700' : 'rgba(255,255,255,0.1)',
+                      boxShadow: isCurrent ? '0 0 6px #ffd700' : 'none',
+                    }}
+                  />
+                  {isCurrent && (
+                    <span className="font-mono text-[9px] text-agothe-gold">{name}</span>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          {isActive && stageValues.litAIs > 1 && (
+            <div className="mt-1.5 h-[1px] w-full overflow-hidden rounded-full bg-[rgba(255,255,255,0.04)]">
+              <div
+                className="h-full rounded-full transition-all duration-300"
+                style={{
+                  width: `${(stageValues.litAIs / 6) * 100}%`,
+                  background: 'linear-gradient(90deg, #ffd700, #ffd70060)',
+                }}
+              />
+            </div>
+          )}
         </div>
       );
     }
@@ -147,18 +224,19 @@ export function ReportGeneration() {
       const val = isActive ? stageValues.deltaH : isPast ? 0.76 : 0;
       const barColor = val > 0.5 ? '#ff3366' : val > 0.3 ? '#ffd700' : '#00f0ff';
       return (
-        <div className="mt-2">
-          <div className="h-1 w-full overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
+        <div className="mt-3">
+          <div className="h-1.5 w-full overflow-hidden rounded-full bg-[rgba(255,255,255,0.06)]">
             <div
               className="h-full rounded-full transition-all duration-100"
               style={{
                 width: `${(val / 1) * 100}%`,
                 backgroundColor: barColor,
+                boxShadow: isActive ? `0 0 8px ${barColor}60` : 'none',
               }}
             />
           </div>
-          <p className="mt-1 font-mono text-[10px]" style={{ color: barColor }}>
-            {`\u03B4_H: ${val.toFixed(2)}`}
+          <p className="mt-1.5 font-mono text-[10px] font-bold" style={{ color: barColor }}>
+            δ_H: {val.toFixed(2)}{isPast || (isActive && val >= 0.7) ? ' — Critical Stress Detected' : ''}
           </p>
         </div>
       );
@@ -166,15 +244,49 @@ export function ReportGeneration() {
     if (idx === 3) {
       const val = isActive ? stageValues.mcs : isPast ? 0.91 : 0;
       return (
-        <p className="mt-2 font-mono text-xs" style={{ color: isActive || isPast ? '#00f0ff' : 'rgba(255,255,255,0.3)' }}>
-          MCS: {val.toFixed(2)}
-        </p>
+        <div className="mt-3">
+          {isActive && (
+            <div className="mb-2 flex gap-0.5">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-2 rounded-sm transition-all duration-300"
+                  style={{
+                    width: '100%',
+                    backgroundColor: i < stageValues.docPieces ? 'rgba(0,240,255,0.15)' : 'rgba(255,255,255,0.03)',
+                    border: i < stageValues.docPieces ? '1px solid rgba(0,240,255,0.2)' : '1px solid rgba(255,255,255,0.04)',
+                  }}
+                />
+              ))}
+            </div>
+          )}
+          <p className="font-mono text-xs" style={{ color: isActive || isPast ? '#00f0ff' : 'rgba(255,255,255,0.3)' }}>
+            Coherence: <span className="font-bold">{val.toFixed(2)}</span>
+          </p>
+        </div>
       );
     }
+    // Stage 4: Delivery
     return (
-      <p className="mt-2 font-mono text-xs" style={{ color: stageValues.delivered ? '#10b981' : 'rgba(255,255,255,0.3)' }}>
-        {stageValues.delivered ? stageValues.timer : '--'}
-      </p>
+      <div className="mt-3">
+        <p className="font-mono text-xs" style={{ color: stageValues.delivered ? '#10b981' : 'rgba(255,255,255,0.3)' }}>
+          {stageValues.delivered ? (
+            <>
+              <span className="mr-1">✓</span>
+              Completed in {stageValues.timer}
+            </>
+          ) : '--'}
+        </p>
+        {stageValues.celebrationPulse && (
+          <div
+            className="mt-2 h-1 w-full rounded-full"
+            style={{
+              background: 'linear-gradient(90deg, #ffd700, #ffd70000)',
+              animation: 'pulse-dot 1s ease-in-out',
+            }}
+          />
+        )}
+      </div>
     );
   }
 
@@ -199,15 +311,31 @@ export function ReportGeneration() {
         <div className="relative mb-6">
           <div className="absolute left-0 right-0 top-1/2 hidden h-[2px] -translate-y-1/2 bg-[rgba(255,255,255,0.06)] md:block" />
           <div
-            className="absolute left-0 top-1/2 hidden h-[2px] -translate-y-1/2 transition-all duration-100 md:block"
+            className="absolute left-0 top-1/2 hidden h-[2px] -translate-y-1/2 md:block"
             style={{
               width: `${progress * 100}%`,
               background: `linear-gradient(90deg, #00f0ff, ${stages[activeStage]?.accent || '#00f0ff'})`,
+              boxShadow: `0 0 8px ${stages[activeStage]?.accent || '#00f0ff'}40`,
+              transition: capability === 'low' ? 'none' : 'width 0.1s linear',
             }}
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-3">
+        {/* Vertical progress line for mobile */}
+        <div className="relative md:hidden">
+          <div className="absolute bottom-0 left-4 top-0 w-[2px] bg-[rgba(255,255,255,0.06)]" />
+          <div
+            className="absolute left-4 top-0 w-[2px]"
+            style={{
+              height: `${progress * 100}%`,
+              background: `linear-gradient(180deg, #00f0ff, ${stages[activeStage]?.accent || '#00f0ff'})`,
+              transition: capability === 'low' ? 'none' : 'height 0.1s linear',
+            }}
+          />
+        </div>
+
+        {/* Desktop: horizontal grid, Mobile: vertical stack */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-3">
           {stages.map((stage, idx) => {
             const isActive = idx === activeStage;
             const isPast = idx < activeStage;
@@ -216,26 +344,28 @@ export function ReportGeneration() {
             return (
               <div
                 key={stage.label}
-                className="rounded-lg p-4 transition-all duration-500"
+                className="obsidian-glass-static rounded-lg p-4 transition-all duration-500"
                 style={{
                   background: isActive
                     ? 'rgba(255,255,255,0.06)'
                     : 'rgba(255,255,255,0.02)',
                   border: `1px solid ${isActive ? stage.accent + '40' : 'rgba(255,255,255,0.06)'}`,
-                  boxShadow: isActive ? `0 0 20px ${stage.accent}15` : 'none',
+                  boxShadow: isActive ? `0 0 24px ${stage.accent}18` : 'none',
                   opacity: isActive || isPast ? 1 : 0.4,
                 }}
               >
-                <Icon
-                  className="mb-2 h-5 w-5 transition-colors duration-300"
-                  style={{ color: isActive || isPast ? stage.accent : 'rgba(255,255,255,0.2)' }}
-                />
-                <p
-                  className="text-xs font-semibold uppercase tracking-wider transition-colors duration-300"
-                  style={{ color: isActive ? stage.accent : isPast ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.3)' }}
-                >
-                  {stage.label}
-                </p>
+                <div className="flex items-center gap-2 md:block">
+                  <Icon
+                    className="mb-0 h-5 w-5 shrink-0 transition-colors duration-300 md:mb-2"
+                    style={{ color: isActive || isPast ? stage.accent : 'rgba(255,255,255,0.2)' }}
+                  />
+                  <p
+                    className="text-xs font-semibold uppercase tracking-wider transition-colors duration-300"
+                    style={{ color: isActive ? stage.accent : isPast ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.3)' }}
+                  >
+                    {stage.label}
+                  </p>
+                </div>
                 {renderStageContent(idx)}
               </div>
             );
