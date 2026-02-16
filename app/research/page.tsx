@@ -13,8 +13,8 @@ export default function ResearchPage() {
       tagline="200M+ academic papers. Synthesized in 48 hours."
       description="Our Research Synthesis Engine scans the full Semantic Scholar corpus, identifies relevant literature, maps citation networks, and produces structured executive summaries with gap analysis. Multi-AI processing ensures no critical papers are missed."
       price="From $500"
-      priceNote="$99\u2013$299/mo subscription also available"
-      ctaLabel="Commission Synthesis"
+      priceNote="16
+      —$299/mo subscription also available"      ctaLabel="Commission Synthesis"
       ctaHref="/contact"
       problemTitle="Research is drowning in volume"
       problemItems={[

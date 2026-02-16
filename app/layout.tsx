@@ -4,6 +4,27 @@ import { Navigation } from '@/components/agothe/navigation';
 import { Footer } from '@/components/agothe/footer';
 import { ScrollProgress } from '@/components/motion/scroll-progress';
 import { ConsciousnessCursor } from '@/components/motion/consciousness-cursor';
+import { SpatialBackdrop } from '@/components/motion/spatial-backdrop';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  weight: ['400', '700'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://agothe.ai'),
@@ -55,6 +76,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <ScrollProgress />
+        <SpatialBackdrop />
         <ConsciousnessCursor />
         <Navigation />
         <div id="main-content">{children}</div>

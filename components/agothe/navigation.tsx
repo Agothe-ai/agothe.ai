@@ -88,9 +88,9 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
             {group.items.map((item, i) => (
               <motion.div
                 key={item.href}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: i * 0.04, duration: 0.15 }}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-slate-50 hover:text-agothe-teal"
               >
                 <Link
                   href={item.href}
@@ -135,7 +135,7 @@ function MobileMenu({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: '100%' }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="fixed inset-0 z-50 overflow-y-auto bg-agothe-bg/95 backdrop-blur-xl"
+          className="fixed inset-0 z-50 overflow-y-auto bg-white/95 backdrop-blur-xl"
         >
           <div className="flex items-center justify-between px-6 py-4">
             <Link href="/" onClick={onClose} className="font-heading text-lg font-bold text-agothe-teal">
@@ -158,7 +158,7 @@ function MobileMenu({
                       key={item.href}
                       href={item.href}
                       onClick={onClose}
-                      className="block rounded-md px-3 py-2.5 text-base text-agothe-white transition-colors hover:bg-[rgba(0,240,255,0.05)]"
+                      className="block rounded-md px-3 py-2.5 text-base text-agothe-white transition-colors hover:bg-slate-50"
                     >
                       {item.label}
                     </Link>
@@ -168,9 +168,16 @@ function MobileMenu({
             ))}
 
             <Link
+              href="/demo"
+              onClick={onClose}
+              className="mt-4 block rounded-full border border-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-teal transition-colors hover:bg-slate-50"
+            >
+              Schedule Demo
+            </Link>
+            <Link
               href="/contact"
               onClick={onClose}
-              className="mt-4 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-bg"
+              className="mt-3 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-slate-700"
             >
               Commission Report
             </Link>
@@ -198,7 +205,7 @@ export function Navigation() {
       <header
         className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'border-b border-[rgba(255,255,255,0.06)] bg-agothe-bg/80 backdrop-blur-xl'
+            ? 'border-b border-[rgba(0,0,0,0.08)] bg-white/80 backdrop-blur-xl shadow-sm'
             : 'bg-transparent'
         }`}
       >
@@ -215,8 +222,14 @@ export function Navigation() {
 
           <div className="flex items-center gap-4">
             <Link
+              href="/demo"
+              className="hidden rounded-full border border-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-teal transition-all hover:bg-slate-50 lg:inline-flex"
+            >
+              Schedule Demo
+            </Link>
+            <Link
               href="/contact"
-              className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-bg transition-shadow hover:shadow-[0_0_20px_rgba(0,240,255,0.3)] lg:inline-flex"
+              className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-slate-200 lg:inline-flex"
             >
               Commission Report
             </Link>

@@ -291,9 +291,23 @@ export function ReportGeneration() {
   }
 
   return (
-    <section ref={sectionRef} className="px-4 py-16 md:py-24">
+    <section className="relative overflow-hidden bg-[#0a0a0a] px-4 py-16 md:py-24">
+      {/* Subtle texture overlay */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'1\' /%3E%3C/svg%3E")',
+      }} />
+
       <div className="mx-auto max-w-5xl">
-        {/* Progress line connecting all stages */}
+        {/* Section heading */}
+        <div className="mb-12 text-center">
+          <h2 className="mb-3 text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
+            Intelligence Synthesis Pipeline
+          </h2>
+          <p className="text-sm text-[rgba(255,255,255,0.6)] md:text-base">
+            Real-time report generation in under 2 hours
+          </p>
+        </div>
+
         <div className="relative mb-6">
           <div className="absolute left-0 right-0 top-1/2 hidden h-[2px] -translate-y-1/2 bg-[rgba(255,255,255,0.06)] md:block" />
           <div

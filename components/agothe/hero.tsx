@@ -82,19 +82,23 @@ export function Hero() {
           AI-Powered Research &amp; Crisis Intelligence
         </p>
 
-        <h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
-          {headingSegments.map((seg, si) =>
-            seg.text.split('').map((char, ci) =>
-              char === ' ' ? (
-                <span key={`${si}-${ci}`}> </span>
-              ) : (
-                <span key={`${si}-${ci}`} className={`inline-block overflow-hidden ${seg.className}`}>
-                  <span className="hero-char inline-block">{char}</span>
-                </span>
-              )
-            )
-          )}
-        </h1>
+        <div className="relative inline-block rounded-2xl bg-[rgba(0,0,0,0.4)] px-8 py-6 backdrop-blur-sm">
+          <h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
+            {headingSegments.map((seg, si) => (
+              <span key={si} className="inline-block whitespace-nowrap">
+                {seg.text.split('').map((char, ci) =>
+                  char === ' ' ? (
+                    <span key={`${si}-${ci}`}> </span>
+                  ) : (
+                    <span key={`${si}-${ci}`} className={`inline-block overflow-hidden ${seg.className}`}>
+                      <span className="hero-char inline-block">{char}</span>
+                    </span>
+                  )
+                )}
+              </span>
+            ))}
+          </h1>
+        </div>
 
         <p
           data-hero-item=""
@@ -109,13 +113,13 @@ export function Hero() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
-            href="#demo"
+            href="/demo"
             className="inline-flex items-center rounded-full bg-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-bg transition-shadow hover:shadow-[0_0_30px_rgba(0,240,255,0.3)]"
           >
-            See Live Demo
+            Schedule Demo
           </a>
           <a
-            href="#pricing"
+            href="/contact"
             className="inline-flex items-center rounded-full border border-agothe-teal px-8 py-4 text-sm font-semibold text-agothe-teal transition-all hover:bg-agothe-teal/10"
           >
             Commission a Report

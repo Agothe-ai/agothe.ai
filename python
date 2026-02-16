@@ -1,0 +1,7 @@
+agothe.ai/
+├── python/                          # NEW Python backend directory
+│   ├── calculate_lsse_tensor.py     # Place here
+│   ├── agothe_constants.json        # Place here
+│   ├── cfe_engine.py                # Create this (CFE implementation)
+│   ├── requirements.txt             # Add: numpy
+│   └── README.md                    # Document Python backend
