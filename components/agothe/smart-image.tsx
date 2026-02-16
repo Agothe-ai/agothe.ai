@@ -25,7 +25,7 @@ export function SmartImage({
   priority = false,
   sizes,
   className = '',
-  fallbackSrc = '/images/utility/fallback-dark.webp',
+  fallbackSrc = '/images/utility/fallback-dark.svg',
   objectFit = 'cover',
 }: SmartImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
