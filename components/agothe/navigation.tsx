@@ -86,21 +86,15 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
             className="obsidian-glass-static absolute left-0 top-full z-50 mt-2 min-w-[280px] rounded-lg p-2"
           >
             {group.items.map((item, i) => (
-              <motion.div
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-slate-50 hover:text-agothe-teal"
+                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-[rgba(0,240,255,0.05)] hover:text-agothe-white"
               >
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-[rgba(0,240,255,0.05)] hover:text-agothe-white"
-                >
-                  <span className="block h-1 w-1 shrink-0 rounded-full bg-agothe-teal/50" />
-                  {item.label}
-                </Link>
-              </motion.div>
+                <span className="block h-1 w-1 shrink-0 rounded-full bg-agothe-teal/50" />
+                {item.label}
+              </Link>
             ))}
           </motion.div>
         )}
@@ -135,13 +129,13 @@ function MobileMenu({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: '100%' }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="fixed inset-0 z-50 overflow-y-auto bg-white/95 backdrop-blur-xl"
+          className="fixed inset-0 z-50 overflow-y-auto bg-[rgba(10,22,40,0.98)] backdrop-blur-xl"
         >
           <div className="flex items-center justify-between px-6 py-4">
             <Link href="/" onClick={onClose} className="font-heading text-lg font-bold text-agothe-teal">
               agothe.ai
             </Link>
-            <button onClick={onClose} className="text-agothe-muted" aria-label="Close menu">
+            <button onClick={onClose} className="text-agothe-white" aria-label="Close menu">
               <X className="h-6 w-6" />
             </button>
           </div>
@@ -158,7 +152,7 @@ function MobileMenu({
                       key={item.href}
                       href={item.href}
                       onClick={onClose}
-                      className="block rounded-md px-3 py-2.5 text-base text-agothe-white transition-colors hover:bg-slate-50"
+                      className="block rounded-md px-3 py-2.5 text-base text-agothe-white transition-colors hover:bg-agothe-teal/10"
                     >
                       {item.label}
                     </Link>
@@ -170,14 +164,14 @@ function MobileMenu({
             <Link
               href="/demo"
               onClick={onClose}
-              className="mt-4 block rounded-full border border-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-teal transition-colors hover:bg-slate-50"
+              className="mt-4 block rounded-full border border-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-teal transition-colors hover:bg-agothe-teal/10"
             >
               Schedule Demo
             </Link>
             <Link
               href="/contact"
               onClick={onClose}
-              className="mt-3 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-white transition-colors hover:bg-slate-700"
+              className="mt-3 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-void transition-colors hover:bg-agothe-teal/90"
             >
               Commission Report
             </Link>
@@ -205,7 +199,7 @@ export function Navigation() {
       <header
         className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
           scrolled
-            ? 'border-b border-[rgba(0,0,0,0.08)] bg-white/80 backdrop-blur-xl shadow-sm'
+            ? 'border-b border-[rgba(0,240,255,0.1)] bg-[rgba(10,22,40,0.85)] backdrop-blur-xl shadow-lg shadow-black/20'
             : 'bg-transparent'
         }`}
       >
@@ -223,20 +217,20 @@ export function Navigation() {
           <div className="flex items-center gap-4">
             <Link
               href="/demo"
-              className="hidden rounded-full border border-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-teal transition-all hover:bg-slate-50 lg:inline-flex"
+              className="hidden rounded-full border border-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-teal transition-all hover:bg-agothe-teal/10 lg:inline-flex"
             >
               Schedule Demo
             </Link>
             <Link
               href="/contact"
-              className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-slate-200 lg:inline-flex"
+              className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-void transition-all hover:shadow-lg hover:shadow-agothe-teal/20 lg:inline-flex"
             >
               Commission Report
             </Link>
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="text-agothe-muted lg:hidden"
+              className="text-agothe-white lg:hidden"
               aria-label="Open menu"
             >
               <Menu className="h-6 w-6" />

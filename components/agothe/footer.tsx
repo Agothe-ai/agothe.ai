@@ -58,13 +58,13 @@ function FooterColumn({ title, links }: { title: string; links: { label: string;
 
 export function Footer() {
   return (
-    <footer>
-      <div className="border-t border-[rgba(0,240,255,0.1)] py-3 overflow-hidden">
+    <footer className="bg-[#050505]">
+      <div className="border-t border-[rgba(0,240,255,0.1)] py-3 overflow-hidden bg-[#050505]">
         <div className="flex animate-marquee whitespace-nowrap">
-          <span className="font-mono text-xs text-[rgba(0,240,255,0.4)]">
+          <span className="font-mono text-xs text-[rgba(0,240,255,0.4)] uppercase tracking-wider">
             {tickerText}
           </span>
-          <span className="font-mono text-xs text-[rgba(0,240,255,0.4)]">
+          <span className="font-mono text-xs text-[rgba(0,240,255,0.4)] uppercase tracking-wider">
             {tickerText}
           </span>
         </div>
