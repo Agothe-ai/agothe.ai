@@ -15,13 +15,13 @@ export default function SimulationPage() {
       title="Valentine Simulator"
       tagline="1,000+ scenario variants. Quantified outcomes."
       description="Valentine is our mathematical simulation engine. It runs Monte Carlo simulations across constraint field models, generating 1,000+ scenario variants with quantified probability distributions. The result: decision-grade intelligence, not guesswork."
-      price="$997\u2013$9,997"
+      price="$997-$9,997"
       priceNote="Per simulation run, based on model complexity"
       ctaLabel="Run Simulation"
       ctaHref="/contact"
       problemTitle="Decisions without simulation are gambles"
       problemItems={[
-        'Most scenario planning is qualitative \u2014 best case, worst case, most likely',
+        'Most scenario planning is qualitative best case, worst case, most likely',
         'Real systems have thousands of interacting variables',
         'Human intuition systematically misjudges probability distributions',
         'Without quantified outcomes, strategy is just storytelling',
