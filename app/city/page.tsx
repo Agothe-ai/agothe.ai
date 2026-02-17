@@ -3,7 +3,7 @@ import { ServicePage } from '@/components/agothe/service-page-template';
 import { CityParallax } from '@/components/motion/city-parallax';
 
 export const metadata: Metadata = {
-  title: 'Agothe City \u2014 Cognitive Navigation',
+  title: 'Agothe City Cognitive Navigation',
   description: 'Your mind as a living, navigable city. Spatialized cognitive navigation and consciousness mapping.',
 };
 
