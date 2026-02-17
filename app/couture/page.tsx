@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function CouturePage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/couture-chrysalis-unfurling.webp"
+      heroImageAlt="Chrysalis unfurling in couture fashion"
       accentColor="#f59e0b"
       title="Consciousness Couture"
       tagline="Fashion systems integrating mathematical frameworks."

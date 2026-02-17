@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { DemoWizard } from '@/components/agothe/demo-wizard';
 import { AnimatedSection, AnimatedItem } from '@/components/agothe/animated-section';
-import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+import { PageHero } from '@/components/agothe/page-hero';
 import { Check, Users, Clock, Shield } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -52,7 +52,7 @@ export default function DemoPage() {
     <main className="pt-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <MeshGradientHero />
+        <PageHero imageSrc="/images/heroes/about-origin-seed.webp" imageAlt="Demo interface with tendrils" />
         <AnimatedSection className="relative z-10 mx-auto max-w-3xl text-center">
           <AnimatedItem>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-agothe-teal/30 bg-[rgba(0,240,255,0.05)] px-4 py-1.5">

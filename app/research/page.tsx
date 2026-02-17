@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 export default function ResearchPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/research-synthesis-lattice.webp"
+      heroImageAlt="Research synthesis lattice visualization"
       title="Research Synthesis"
       tagline="200M+ academic papers. Synthesized in 48 hours."
       description="Our Research Synthesis Engine scans the full Semantic Scholar corpus, identifies relevant literature, maps citation networks, and produces structured executive summaries with gap analysis. Multi-AI processing ensures no critical papers are missed."

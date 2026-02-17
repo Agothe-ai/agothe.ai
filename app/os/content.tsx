@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { AnimatedSection, AnimatedItem } from '@/components/agothe/animated-section';
 import { SectionHeading } from '@/components/agothe/section-heading';
 import { ObsidianCard } from '@/components/agothe/obsidian-card';
-import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+import { PageHero } from '@/components/agothe/page-hero';
 
 const tiers = [
   {
@@ -38,7 +38,7 @@ export function OSPageContent() {
   return (
     <main className="pt-20">
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <MeshGradientHero />
+        <PageHero imageSrc="/images/heroes/os-52-engine-cluster.webp" imageAlt="52-engine cluster architecture" />
         <AnimatedSection className="relative z-10 mx-auto max-w-3xl text-center">
           <AnimatedItem>
             <h1 className="font-heading text-4xl font-bold text-agothe-white md:text-6xl">

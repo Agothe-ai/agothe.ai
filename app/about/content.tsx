@@ -6,7 +6,7 @@ import { AnimatedSection, AnimatedItem } from '@/components/agothe/animated-sect
 import { ObsidianCard } from '@/components/agothe/obsidian-card';
 import { SectionHeading } from '@/components/agothe/section-heading';
 import { CapsNetworkSection } from '@/components/agothe/caps-network-section';
-import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+import { PageHero } from '@/components/agothe/page-hero';
 
 const CAPSInteractive = lazy(() =>
   import('@/components/motion/caps-interactive').then((mod) => ({ default: mod.CAPSInteractive }))
@@ -78,7 +78,7 @@ export function AboutPageContent() {
   return (
     <main className="pt-20">
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <MeshGradientHero />
+        <PageHero imageSrc="/images/heroes/about-origin-seed.webp" imageAlt="Origin seed of Agothe intelligence" />
         <AnimatedSection className="relative z-10 mx-auto max-w-3xl text-center">
           <AnimatedItem>
             <h1 className="font-heading text-4xl font-bold text-agothe-white md:text-6xl">
