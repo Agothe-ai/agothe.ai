@@ -18,7 +18,7 @@ interface DemoReport {
 const demos: DemoReport[] = [
   {
     badge: 'CAPS-DEMO-001',
-    title: 'U.S.\u2013Iran Crisis Analysis \u2014 February 2026',
+    title: 'U.S. Iran Crisis Analysis. February 2026',
     metrics: [
       { label: '\u03B4_H', value: '0.76' },
       { label: 'MCS', value: '0.91' },
@@ -28,7 +28,7 @@ const demos: DemoReport[] = [
       'The crisis is 70% domestic political theater + energy economics. Only 30% genuine military risk.',
     details: [
       'Solvey Scanner detected 3 Orric paradox points',
-      'PEE-\u03A9 identified 52% propaganda layering in media coverage',
+      'PEE-3 identified 52% propaganda layering in media coverage',
       'Top intervention: Economic de-coupling narrative shift (\u0394\u03B4_H: -0.22)',
       '72% escalation probability within 30 days without intervention',
       'All 6 AI systems converged on same core dynamic (MCS: 0.91)',
@@ -36,7 +36,7 @@ const demos: DemoReport[] = [
   },
   {
     badge: 'CAPS-PROBE-002',
-    title: 'COP30 Climate Crisis \u2014 Multi-AI Systems Analysis',
+    title: 'COP30 Climate Crisis Multi-AI Systems Analysis',
     metrics: [
       { label: '\u03B4_H', value: '2.0-2.5' },
       { label: 'MCS', value: '0.94' },
@@ -48,20 +48,20 @@ const demos: DemoReport[] = [
       'Financial stress coefficient: 0.916 (near unity)',
       'G77 fracture reduces network connectivity (Fiedler value \u03BB\u2082 \u2192 0)',
       'Three independent AIs converged on identical failure modes',
-      'Gemini formalized H-field collapse prediction matching Perplexity\u2019s empirical scan',
+      'Gemini formalized H-field collapse prediction matching Perplexity empirical scan',
       'Hybrid solution emerged only through multi-AI triangulation',
     ],
   },
   {
     badge: 'CAPS-PROBE-003',
-    title: 'Global Supply Chain Stress \u2014 Valentine Simulation',
+    title: 'Global Supply Chain Stress Valentine Simulation',
     metrics: [
       { label: '\u03B4_H', value: '1.8-3.2' },
       { label: 'Scenarios', value: '1,000+' },
       { label: 'MCS', value: '0.89' },
     ],
     finding:
-      'Semiconductor shortage cascades into 12+ secondary collapses by Q4 2026. Mitigation window: 4\u20136 weeks.',
+      'Semiconductor shortage cascades into 12+ secondary collapses by Q4 2026. Mitigation window: 4-6 weeks.',
     details: [
       'Valentine ran 1,000+ Monte Carlo scenario variants',
       'Critical path dependency on 3 TSMC fabrication nodes',
