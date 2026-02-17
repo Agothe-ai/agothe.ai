@@ -22,8 +22,9 @@ const stages: Stage[] = [
 
 const AI_NAMES = ['Perplexity', 'Claude', 'Gemini', 'ChatGPT', 'Grok', '9'];
 
-// For the sequential animation
-const STAGE_DELAY = 800; // 800ms between stages
+// Sequential animation configuration: 800ms delay between stages
+const STAGE_DELAY = 800;
+const NO_ACTIVE_STAGE = -1;
 
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * Math.min(Math.max(t, 0), 1);
@@ -32,7 +33,7 @@ function lerp(a: number, b: number, t: number) {
 export function ReportGeneration() {
   const reducedMotion = useReducedMotion();
   const capability = useDeviceCapability();
-  const [activeStage, setActiveStage] = useState(-1); // Start with no active stage
+  const [activeStage, setActiveStage] = useState(NO_ACTIVE_STAGE);
   const [completedStages, setCompletedStages] = useState<number[]>([]);
   const [stageValues, setStageValues] = useState({
     sources: 0,
@@ -49,6 +50,24 @@ export function ReportGeneration() {
   const [animationStarted, setAnimationStarted] = useState(false);
   const animationFrameRef = useRef<number>();
   const stageStartTimeRef = useRef<number>(0);
+
+  const animateSequentially = useCallback((stageIndex: number) => {
+    if (stageIndex >= stages.length) {
+      return;
+    }
+
+    setActiveStage(stageIndex);
+    stageStartTimeRef.current = Date.now();
+    
+    // Animate the current stage's content
+    animateStageContent(stageIndex);
+
+    // Move to next stage after delay
+    setTimeout(() => {
+      setCompletedStages(prev => [...prev, stageIndex]);
+      animateSequentially(stageIndex + 1);
+    }, STAGE_DELAY);
+  }, []);
 
   // IntersectionObserver — trigger animation when visible
   useEffect(() => {
@@ -68,25 +87,7 @@ export function ReportGeneration() {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reducedMotion, animationStarted]);
-
-  const animateSequentially = (stageIndex: number) => {
-    if (stageIndex >= stages.length) {
-      return;
-    }
-
-    setActiveStage(stageIndex);
-    stageStartTimeRef.current = Date.now();
-    
-    // Animate the current stage's content
-    animateStageContent(stageIndex);
-
-    // Move to next stage after delay
-    setTimeout(() => {
-      setCompletedStages(prev => [...prev, stageIndex]);
-      animateSequentially(stageIndex + 1);
-    }, STAGE_DELAY);
-  };
+  }, [reducedMotion, animationStarted, animateSequentially]);
 
   const animateStageContent = (stageIndex: number) => {
     const startTime = Date.now();
@@ -330,9 +331,9 @@ export function ReportGeneration() {
           <div
             className="absolute left-0 top-1/2 hidden h-[2px] -translate-y-1/2 md:block"
             style={{
-              width: `${activeStage >= 0 ? ((activeStage + 1) / stages.length) * 100 : 0}%`,
-              background: activeStage >= 0 ? `linear-gradient(90deg, #00f0ff, ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'})` : '#00f0ff',
-              boxShadow: activeStage >= 0 ? `0 0 8px ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'}40` : 'none',
+              width: `${activeStage !== NO_ACTIVE_STAGE ? ((activeStage + 1) / stages.length) * 100 : 0}%`,
+              background: activeStage !== NO_ACTIVE_STAGE ? `linear-gradient(90deg, #00f0ff, ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'})` : '#00f0ff',
+              boxShadow: activeStage !== NO_ACTIVE_STAGE ? `0 0 8px ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'}40` : 'none',
               transition: capability === 'low' ? 'none' : 'width 0.8s ease-out',
             }}
           />
@@ -344,8 +345,8 @@ export function ReportGeneration() {
           <div
             className="absolute left-4 top-0 w-[2px]"
             style={{
-              height: `${activeStage >= 0 ? ((activeStage + 1) / stages.length) * 100 : 0}%`,
-              background: activeStage >= 0 ? `linear-gradient(180deg, #00f0ff, ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'})` : '#00f0ff',
+              height: `${activeStage !== NO_ACTIVE_STAGE ? ((activeStage + 1) / stages.length) * 100 : 0}%`,
+              background: activeStage !== NO_ACTIVE_STAGE ? `linear-gradient(180deg, #00f0ff, ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'})` : '#00f0ff',
               transition: capability === 'low' ? 'none' : 'height 0.8s ease-out',
             }}
           />
