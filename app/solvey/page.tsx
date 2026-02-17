@@ -1,58 +1,50 @@
 import type { Metadata } from 'next';
 import { ServicePage } from '@/components/agothe/service-page-template';
-import { DeltaHMap } from '@/components/motion/delta-h-map';
 
 export const metadata: Metadata = {
   title: 'Constraint Field Analysis (Solvey Scanner)',
-  description: 'Measure collapse risk (δ_H) in any system before it breaks. Real-time monitoring and alert thresholds.',
+  description: 'Custom AI automation for your operations. Workflow design, multi-AI orchestration, and Notion integration.',
 };
 
 export default function SolveyPage() {
   return (
     <ServicePage
       heroImage="/images/heroes/solvey-seismograph.webp"
-      heroImageAlt="Solvey seismograph measuring constraint fields"
+      heroImageAlt="AI automation workflow visualization"
       accentColor="#ff3366"
       title="Solvey Scanner"
-      tagline="Measure collapse risk before it breaks."
-      description="The Solvey Scanner quantifies constraint field stress (δ_H) across any complex system. From geopolitical tensions to organizational health to market dynamics. It detects structural instabilities before they manifest as visible crises."
-      price="Custom"
-      priceNote="Enterprise subscription with tailored alert thresholds"
-      ctaLabel="Schedule Demo"
+      tagline="Custom AI automation for your operations."
+      description="We design and build AI-powered workflows tailored to your operations. From multi-AI orchestration to Notion-integrated knowledge management, we automate the work that\u2019s too complex for templates but too repetitive for your best people."
+      price="$297\u2013$2,500"
+      priceNote="Per project, depending on complexity"
+      ctaLabel="Start Project"
       ctaHref="/contact"
-      problemTitle="Crises don't announce themselves"
+      problemTitle="AI tools without architecture are just noise"
       problemItems={[
-        'Collapse happens when constraint fields exceed critical thresholds invisibly',
-        'Qualitative risk assessment cannot measure what it cannot see',
-        'By the time a crisis is visible, the intervention window has closed',
-        'Most monitoring systems detect symptoms, not structural causes',
-        'Without mathematical measurement, risk is just opinion',
+        'Most teams use AI as a chat interface, not a system',
+        'Disconnected tools create information silos, not intelligence',
+        'Generic automation templates don\u2019t match real workflow complexity',
+        'Without orchestration, multiple AI tools fight instead of coordinate',
+        'Manual handoffs between AI systems waste 60% of potential value',
       ]}
-      solutionTitle="Quantified collapse prediction"
-      solutionDescription="The Solvey Scanner applies the Constraint-Resonance Duality framework to measure δ_H. The stress index of any constraint field. When δ_H approaches critical thresholds, you get advance warning with time to intervene."
-      solutionMetrics={[
-        { label: 'Measurement', value: 'δ_H Index' },
-        { label: 'Monitoring', value: 'Real-time' },
-        { label: 'Alert Speed', value: '<5 min' },
-      ]}
+      solutionTitle="Orchestrated AI workflows"
+      solutionDescription="We map your operations, identify automation opportunities, and build multi-AI workflows that coordinate tools like an intelligence network \u2014 not a collection of chatbots."
       features={[
-        { title: 'Real-time δ_H Tracking', description: 'Continuous measurement of constraint field stress across your defined monitoring targets.' },
-        { title: 'Custom Alert Thresholds', description: 'Set δ_H warning and critical thresholds tailored to your system's specific tolerances.' },
-        { title: 'Weekly Intelligence Briefs', description: 'Scheduled reports on constraint field trends, emerging stress patterns, and recommended interventions.' },
-        { title: 'API Access (Coming Soon)', description: 'Integrate Solvey Scanner data directly into your existing monitoring infrastructure and dashboards.' },
+        { title: 'Workflow Design', description: 'Complete mapping of your current processes and design of AI-optimized workflows with clear input/output specifications.' },
+        { title: 'Multi-AI Orchestration', description: 'Coordination of multiple AI systems (Claude, GPT, Gemini, Perplexity) with defined roles and handoff protocols.' },
+        { title: 'Notion Integration', description: 'Deep integration with Notion as a knowledge hub \u2014 automated databases, content pipelines, and living documentation.' },
+        { title: 'Ongoing Maintenance', description: 'Monthly optimization based on usage patterns, model updates, and evolving workflow requirements.' },
       ]}
       faq={[
-        { question: 'What is δ_H?', answer: 'Delta-H is the core metric of the Constraint-Resonance Duality framework. It measures the stress level in a constraint field. How close a system is to structural collapse or transformation.' },
-        { question: 'What systems can you monitor?', answer: 'Any complex system with measurable constraints: organizations, markets, geopolitical regions, supply chains, institutional health, and more.' },
-        { question: 'How is this different from risk management?', answer: 'Traditional risk management is qualitative and reactive. Solvey Scanner is quantitative and predictive. It measures structural stress before it becomes a visible problem.' },
-        { question: 'What does an enterprise subscription include?', answer: 'Dedicated analyst, custom monitoring setup, real-time alerts, weekly briefs, and direct CAPS Network access for deep analysis on demand.' },
+        { question: 'What kinds of workflows can you automate?', answer: 'Research pipelines, content production, client onboarding, report generation, competitive analysis, knowledge management, and any process involving multiple AI tools.' },
+        { question: 'Do I need technical expertise?', answer: 'No. We handle all technical implementation. You provide domain knowledge and requirements; we build the system.' },
+        { question: 'How long does a project take?', answer: '1\u20132 weeks for simple automations, 2\u20134 weeks for complex multi-AI orchestrations. Rush delivery available.' },
+        { question: 'What\u2019s included in maintenance?', answer: 'Monthly review of workflow performance, model updates, prompt optimization, and up to 4 hours of modifications per month.' },
       ]}
       relatedServices={[
         { label: 'CAPS Intelligence', href: '/intelligence' },
-        { label: 'Propaganda Detection', href: '/propaganda' },
+        { label: 'Research Synthesis', href: '/research' },
       ]}
-    >
-      <DeltaHMap />
-    </ServicePage>
+    />
   );
 }
