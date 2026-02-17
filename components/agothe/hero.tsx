@@ -71,17 +71,10 @@ export function Hero() {
   ];
 
   return (
-    <section ref={containerRef} className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4">
+    <section ref={containerRef} className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20">
       <MeshGradientHero />
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
-        <p
-          data-hero-item=""
-          className="mb-6 text-xs font-medium uppercase tracking-[0.3em] text-agothe-muted"
-        >
-          AI-Powered Research &amp; Crisis Intelligence
-        </p>
-
         <div className="relative inline-block rounded-2xl bg-[rgba(0,0,0,0.4)] px-8 py-6 backdrop-blur-sm">
           <h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
             {headingSegments.map((seg, si) => {
@@ -95,6 +88,13 @@ export function Hero() {
             })}
           </h1>
         </div>
+
+        <h2
+          data-hero-item=""
+          className="mt-8 text-xl font-semibold text-agothe-white md:text-2xl"
+        >
+          AI-Powered Research Synthesis &amp; Crisis Intelligence
+        </h2>
 
         <p
           data-hero-item=""
