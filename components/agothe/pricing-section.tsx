@@ -27,7 +27,7 @@ const tiers: PricingTier[] = [
       '48-hour delivery',
     ],
     cta: 'Commission Report',
-    href: '#contact',
+    href: '#intel-brief-signup',
   },
   {
     name: 'CAPS Intelligence',
@@ -42,7 +42,7 @@ const tiers: PricingTier[] = [
       'Under 4-hour delivery',
     ],
     cta: 'Get Started',
-    href: '#contact',
+    href: '#intel-brief-signup',
     highlighted: true,
   },
   {
@@ -57,7 +57,7 @@ const tiers: PricingTier[] = [
       'API access (coming soon)',
     ],
     cta: 'Contact Us',
-    href: '#contact',
+    href: '#intel-brief-signup',
   },
 ];
 

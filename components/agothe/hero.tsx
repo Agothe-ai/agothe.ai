@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 import { Counter } from './counter';
 import { LiveStatus } from './live-status';
 import { SmartImage } from './smart-image';
+import { NewsletterSignup } from './newsletter-signup';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const metrics = [
@@ -140,6 +141,10 @@ export function Hero() {
         >
           S2ORC Partner &nbsp;&middot;&nbsp; Notion Certified &nbsp;&middot;&nbsp; OpenAI Ecosystem
         </p>
+
+        <div data-hero-item="" className="mt-6">
+          <NewsletterSignup />
+        </div>
       </div>
 
       <div

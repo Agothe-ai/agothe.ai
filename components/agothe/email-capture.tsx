@@ -18,7 +18,10 @@ export function EmailCapture() {
 
     const { error } = await supabase
       .from('newsletter_subscribers')
-      .insert({ email: email.trim().toLowerCase() });
+      .insert({ 
+        email: email.trim().toLowerCase(),
+        source: 'homepage-bottom'
+      });
 
     if (error) {
       if (error.code === '23505') {
@@ -34,7 +37,7 @@ export function EmailCapture() {
   }
 
   return (
-    <section id="contact" className="relative px-4 py-24 md:py-32">
+    <section id="intel-brief-signup" className="relative px-4 py-24 md:py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-agothe-teal/[0.03] to-transparent" />
 
       <AnimatedSection className="relative mx-auto max-w-xl">
@@ -50,7 +53,7 @@ export function EmailCapture() {
 
             {status === 'success' ? (
               <p className="mt-8 font-mono text-lg text-agothe-teal">
-                Welcome to the field.
+                You&apos;ve entered the field. First brief incoming.
               </p>
             ) : (
               <form
