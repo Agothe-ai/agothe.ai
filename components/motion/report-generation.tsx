@@ -22,7 +22,8 @@ const stages: Stage[] = [
 
 const AI_NAMES = ['Perplexity', 'Claude', 'Gemini', 'ChatGPT', 'Grok', '9'];
 
-const CYCLE = 20000;
+// For the sequential animation
+const STAGE_DELAY = 800; // 800ms between stages
 
 function lerp(a: number, b: number, t: number) {
   return a + (b - a) * Math.min(Math.max(t, 0), 1);
@@ -31,8 +32,8 @@ function lerp(a: number, b: number, t: number) {
 export function ReportGeneration() {
   const reducedMotion = useReducedMotion();
   const capability = useDeviceCapability();
-  const [activeStage, setActiveStage] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const [activeStage, setActiveStage] = useState(-1); // Start with no active stage
+  const [completedStages, setCompletedStages] = useState<number[]>([]);
   const [stageValues, setStageValues] = useState({
     sources: 0,
     litAIs: 0,
@@ -42,95 +43,120 @@ export function ReportGeneration() {
     mcs: 0,
     delivered: false,
     timer: '',
-    celebrationPulse: false,
     docPieces: 0,
   });
-  const frameRef = useRef<number>(0);
-  const startRef = useRef<number>(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [animationStarted, setAnimationStarted] = useState(false);
+  const animationFrameRef = useRef<number>();
+  const stageStartTimeRef = useRef<number>(0);
 
-  // IntersectionObserver — only animate when within 200px of viewport
+  // IntersectionObserver — trigger animation when visible
   useEffect(() => {
-    if (reducedMotion) {
-      setIsVisible(true);
+    if (reducedMotion || animationStarted) {
       return;
     }
     const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { rootMargin: '200px' }
+      ([entry]) => {
+        if (entry.isIntersecting && !animationStarted) {
+          setAnimationStarted(true);
+          animateSequentially(0);
+        }
+      },
+      { rootMargin: '100px' }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [reducedMotion]);
+  }, [reducedMotion, animationStarted]);
 
-  const animate = useCallback((now: number) => {
-    if (!startRef.current) startRef.current = now;
-    const elapsed = (now - startRef.current) % CYCLE;
-    const overallProgress = elapsed / CYCLE;
-
-    setProgress(overallProgress);
-
-    const stageIdx = Math.min(Math.floor(overallProgress * 5), 4);
-    setActiveStage(stageIdx);
-
-    const stageProgress = (overallProgress * 5) % 1;
-
-    const values = {
-      sources: 0,
-      litAIs: 0,
-      currentAI: '',
-      deltaH: 0,
-      deltaHColor: '#00f0ff' as string,
-      mcs: 0,
-      delivered: false,
-      timer: '',
-      celebrationPulse: false,
-      docPieces: 0,
-    };
-
-    if (stageIdx === 0) {
-      values.sources = Math.round(lerp(0, 287, stageProgress));
-    } else if (stageIdx === 1) {
-      values.sources = 287;
-      values.litAIs = Math.min(Math.floor(stageProgress * 7), 6);
-      const aiIdx = Math.min(Math.floor(stageProgress * 6), 5);
-      values.currentAI = AI_NAMES[aiIdx];
-    } else if (stageIdx === 2) {
-      values.sources = 287;
-      values.litAIs = 6;
-      values.deltaH = lerp(0, 0.76, stageProgress);
-      const dh = values.deltaH;
-      values.deltaHColor = dh > 0.5 ? '#ff3366' : dh > 0.3 ? '#ffd700' : '#00f0ff';
-    } else if (stageIdx === 3) {
-      values.sources = 287;
-      values.litAIs = 6;
-      values.deltaH = 0.76;
-      values.deltaHColor = '#ff3366';
-      values.mcs = lerp(0, 0.91, stageProgress);
-      values.docPieces = Math.min(Math.floor(stageProgress * 6), 5);
-    } else {
-      values.sources = 287;
-      values.litAIs = 6;
-      values.deltaH = 0.76;
-      values.deltaHColor = '#ff3366';
-      values.mcs = 0.91;
-      values.docPieces = 5;
-      values.delivered = stageProgress > 0.3;
-      values.timer = '1.8 hours';
-      values.celebrationPulse = stageProgress > 0.5 && stageProgress < 0.9;
+  const animateSequentially = (stageIndex: number) => {
+    if (stageIndex >= stages.length) {
+      return;
     }
 
-    setStageValues(values);
-    frameRef.current = requestAnimationFrame(animate);
-  }, []);
+    setActiveStage(stageIndex);
+    stageStartTimeRef.current = Date.now();
+    
+    // Animate the current stage's content
+    animateStageContent(stageIndex);
+
+    // Move to next stage after delay
+    setTimeout(() => {
+      setCompletedStages(prev => [...prev, stageIndex]);
+      animateSequentially(stageIndex + 1);
+    }, STAGE_DELAY);
+  };
+
+  const animateStageContent = (stageIndex: number) => {
+    const startTime = Date.now();
+    const duration = STAGE_DELAY;
+
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+
+      const values = {
+        sources: 0,
+        litAIs: 0,
+        currentAI: '',
+        deltaH: 0,
+        deltaHColor: '#00f0ff' as string,
+        mcs: 0,
+        delivered: false,
+        timer: '',
+        docPieces: 0,
+      };
+
+      // Carry forward completed stage values
+      if (stageIndex >= 0) values.sources = 287;
+      if (stageIndex >= 1) values.litAIs = 6;
+      if (stageIndex >= 2) {
+        values.deltaH = 0.76;
+        values.deltaHColor = '#ff3366';
+      }
+      if (stageIndex >= 3) {
+        values.mcs = 0.91;
+        values.docPieces = 5;
+      }
+      if (stageIndex >= 4) {
+        values.delivered = true;
+        values.timer = '1.8 hours';
+      }
+
+      // Animate current stage
+      if (stageIndex === 0) {
+        values.sources = Math.round(lerp(0, 287, progress));
+      } else if (stageIndex === 1) {
+        values.litAIs = Math.min(Math.floor(progress * 7), 6);
+        const aiIdx = Math.min(Math.floor(progress * 6), 5);
+        values.currentAI = AI_NAMES[aiIdx];
+      } else if (stageIndex === 2) {
+        values.deltaH = lerp(0, 0.76, progress);
+        const dh = values.deltaH;
+        values.deltaHColor = dh > 0.5 ? '#ff3366' : dh > 0.3 ? '#ffd700' : '#00f0ff';
+      } else if (stageIndex === 3) {
+        values.mcs = lerp(0, 0.91, progress);
+        values.docPieces = Math.min(Math.floor(progress * 6), 5);
+      }
+
+      setStageValues(values);
+
+      if (progress < 1) {
+        animationFrameRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+    animate();
+  };
 
   useEffect(() => {
     if (reducedMotion) {
       setActiveStage(4);
-      setProgress(1);
+      setCompletedStages([0, 1, 2, 3, 4]);
       setStageValues({
         sources: 287,
         litAIs: 6,
@@ -140,21 +166,21 @@ export function ReportGeneration() {
         mcs: 0.91,
         delivered: true,
         timer: '1.8 hours',
-        celebrationPulse: false,
         docPieces: 5,
       });
       return;
     }
 
-    if (!isVisible) return;
-
-    frameRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameRef.current);
-  }, [reducedMotion, animate, isVisible]);
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [reducedMotion]);
 
   function renderStageContent(idx: number) {
     const isActive = idx === activeStage;
-    const isPast = idx < activeStage;
+    const isPast = completedStages.includes(idx);
 
     if (idx === 0) {
       return (
@@ -277,21 +303,12 @@ export function ReportGeneration() {
             </>
           ) : '--'}
         </p>
-        {stageValues.celebrationPulse && (
-          <div
-            className="mt-2 h-1 w-full rounded-full"
-            style={{
-              background: 'linear-gradient(90deg, #ffd700, #ffd70000)',
-              animation: 'pulse-dot 1s ease-in-out',
-            }}
-          />
-        )}
       </div>
     );
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#0a0a0a] px-4 py-16 md:py-24">
+    <section ref={sectionRef} className="relative overflow-hidden bg-[#0a0a0a] px-4 py-16 md:py-24">
       {/* Subtle texture overlay */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100\' height=\'100\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100\' height=\'100\' filter=\'url(%23noise)\' opacity=\'1\' /%3E%3C/svg%3E")',
@@ -313,10 +330,10 @@ export function ReportGeneration() {
           <div
             className="absolute left-0 top-1/2 hidden h-[2px] -translate-y-1/2 md:block"
             style={{
-              width: `${progress * 100}%`,
-              background: `linear-gradient(90deg, #00f0ff, ${stages[activeStage]?.accent || '#00f0ff'})`,
-              boxShadow: `0 0 8px ${stages[activeStage]?.accent || '#00f0ff'}40`,
-              transition: capability === 'low' ? 'none' : 'width 0.1s linear',
+              width: `${activeStage >= 0 ? ((activeStage + 1) / stages.length) * 100 : 0}%`,
+              background: activeStage >= 0 ? `linear-gradient(90deg, #00f0ff, ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'})` : '#00f0ff',
+              boxShadow: activeStage >= 0 ? `0 0 8px ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'}40` : 'none',
+              transition: capability === 'low' ? 'none' : 'width 0.8s ease-out',
             }}
           />
         </div>
@@ -327,9 +344,9 @@ export function ReportGeneration() {
           <div
             className="absolute left-4 top-0 w-[2px]"
             style={{
-              height: `${progress * 100}%`,
-              background: `linear-gradient(180deg, #00f0ff, ${stages[activeStage]?.accent || '#00f0ff'})`,
-              transition: capability === 'low' ? 'none' : 'height 0.1s linear',
+              height: `${activeStage >= 0 ? ((activeStage + 1) / stages.length) * 100 : 0}%`,
+              background: activeStage >= 0 ? `linear-gradient(180deg, #00f0ff, ${stages[Math.min(activeStage, stages.length - 1)]?.accent || '#00f0ff'})` : '#00f0ff',
+              transition: capability === 'low' ? 'none' : 'height 0.8s ease-out',
             }}
           />
         </div>
@@ -338,7 +355,7 @@ export function ReportGeneration() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-5 md:gap-3">
           {stages.map((stage, idx) => {
             const isActive = idx === activeStage;
-            const isPast = idx < activeStage;
+            const isPast = completedStages.includes(idx);
             const Icon = stage.icon;
 
             return (
@@ -349,8 +366,8 @@ export function ReportGeneration() {
                   background: isActive
                     ? 'rgba(255,255,255,0.06)'
                     : 'rgba(255,255,255,0.02)',
-                  border: `1px solid ${isActive ? stage.accent + '40' : 'rgba(255,255,255,0.06)'}`,
-                  boxShadow: isActive ? `0 0 24px ${stage.accent}18` : 'none',
+                  border: `1px solid ${isActive ? `rgba(0,240,255,0.25)` : 'rgba(255,255,255,0.06)'}`,
+                  boxShadow: isActive ? `0 0 24px rgba(0,240,255,0.094)` : 'none',
                   opacity: isActive || isPast ? 1 : 0.4,
                 }}
               >

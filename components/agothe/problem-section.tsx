@@ -60,7 +60,7 @@ export function ProblemSection() {
         </AnimatedItem>
 
         <AnimatedItem>
-          <p className="mx-auto mt-12 max-w-3xl text-center text-lg leading-relaxed text-agothe-muted md:text-xl">
+          <p className="mx-auto mt-12 max-w-3xl text-center text-lg leading-relaxed text-white/90 shadow-[0_0_20px_rgba(255,255,255,0.1)] md:text-xl">
             Agothe coordinates six specialized AI systems through a mathematical
             framework called Constraint-Resonance Duality. The result:
             intelligence-grade analysis that&apos;s faster, cheaper, and more
