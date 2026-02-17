@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function PropagandaPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/propaganda-filter.webp"
+      heroImageAlt="Propaganda detection filter"
       accentColor="#ff3366"
       title="Propaganda Detection"
       tagline="Strip manipulation from information."

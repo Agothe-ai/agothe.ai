@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react';
 import { AnimatedSection, AnimatedItem } from '@/components/agothe/animated-section';
 import { supabase } from '@/lib/supabase';
-import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+import { PageHero } from '@/components/agothe/page-hero';
 
 const services = [
   'Research Synthesis',
@@ -54,7 +54,7 @@ export function ContactPageContent() {
   return (
     <main className="pt-20">
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <MeshGradientHero />
+        <PageHero imageSrc="/images/heroes/contact-open-hand.webp" imageAlt="Open hand welcoming contact" />
         <AnimatedSection className="relative z-10 mx-auto max-w-3xl text-center">
           <AnimatedItem>
             <h1 className="font-heading text-4xl font-bold text-agothe-white md:text-6xl">

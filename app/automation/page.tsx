@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 export default function AutomationPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/about-origin-seed.webp"
+      heroImageAlt="AI automation workflow visualization"
       accentColor="#00f0ff"
       title="AI Automation"
       tagline="Custom AI automation for your operations."

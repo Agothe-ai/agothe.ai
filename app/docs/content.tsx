@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { AnimatedSection, AnimatedItem } from '@/components/agothe/animated-section';
 import { ObsidianCard } from '@/components/agothe/obsidian-card';
 import { Book, Code2, Calculator, Activity, ChevronRight } from 'lucide-react';
-import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+import { PageHero } from '@/components/agothe/page-hero';
 
 interface DocSection {
   id: string;
@@ -181,7 +181,7 @@ export function DocsPageContent() {
   return (
     <main className="pt-20">
       <section className="relative overflow-hidden px-6 py-16 md:py-24">
-        <MeshGradientHero />
+        <PageHero imageSrc="/images/heroes/about-origin-seed.webp" imageAlt="Archive coral documentation" />
         <AnimatedSection className="relative z-10 mx-auto max-w-3xl text-center">
           <AnimatedItem>
             <h1 className="font-heading text-4xl font-bold text-agothe-white md:text-5xl">

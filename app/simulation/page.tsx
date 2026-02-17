@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 export default function SimulationPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/about-origin-seed.webp"
+      heroImageAlt="Valentine mathematical simulation visualization"
       accentColor="#8b5cf6"
       title="Valentine Simulator"
       tagline="1,000+ scenario variants. Quantified outcomes."

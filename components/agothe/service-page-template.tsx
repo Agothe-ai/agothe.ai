@@ -8,6 +8,7 @@ import { AnimatedSection, AnimatedItem } from './animated-section';
 import { ObsidianCard } from './obsidian-card';
 import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
 import { ChromeHeroOverlay } from '@/components/motion/chrome-liquid-metal';
+import { PageHero } from './page-hero';
 
 interface FaqItem {
   question: string;
@@ -41,6 +42,8 @@ export interface ServicePageProps {
   children?: React.ReactNode;
   heroOverride?: 'chrome';
   heroContent?: React.ReactNode;
+  heroImage?: string;
+  heroImageAlt?: string;
 }
 
 function FaqAccordion({ items }: { items: FaqItem[] }) {
@@ -97,7 +100,13 @@ export function ServicePage(props: ServicePageProps) {
     <main className="pt-20">
       {props.heroContent}
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        {props.heroOverride === 'chrome' ? <ChromeHeroOverlay /> : <MeshGradientHero accentColor={accent} />}
+        {props.heroImage ? (
+          <PageHero imageSrc={props.heroImage} imageAlt={props.heroImageAlt || props.title} />
+        ) : props.heroOverride === 'chrome' ? (
+          <ChromeHeroOverlay />
+        ) : (
+          <MeshGradientHero accentColor={accent} />
+        )}
         <div
           className="pointer-events-none absolute inset-0 z-[1]"
           style={{ background: overlayGradient }}

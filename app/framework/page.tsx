@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 export default function FrameworkPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/about-origin-seed.webp"
+      heroImageAlt="Framework architecture organism"
       accentColor="#06b6d4"
       title="Framework Licensing"
       tagline="Learn the Agothean framework. Build your own practice."

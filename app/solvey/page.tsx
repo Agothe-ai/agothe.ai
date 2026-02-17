@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function SolveyPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/solvey-seismograph.webp"
+      heroImageAlt="Solvey seismograph measuring constraint fields"
       accentColor="#ff3366"
       title="Solvey Scanner"
       tagline="Measure collapse risk before it breaks."
