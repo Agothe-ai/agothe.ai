@@ -49,8 +49,56 @@ export default function SolveyPage() {
     >
       <LiveDemoSection
         title="Live Demo"
-        description="Interactive demonstration section - HTML content can be added here"
-        htmlContent=""
+        description="Interactive demonstration - click the button to see it in action"
+        htmlContent={`
+          <div style="text-align: center; padding: 60px 20px;">
+            <h3 style="color: #00f0ff; font-size: 24px; margin-bottom: 30px; font-family: 'Space Grotesk', sans-serif;">
+              Interactive Example
+            </h3>
+            
+            <div style="max-width: 400px; margin: 0 auto; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 12px; border: 1px solid rgba(0,240,255,0.2);">
+              <p id="demo-text" style="color: #64748b; margin-bottom: 25px; font-size: 16px;">
+                Click the button below to see a live interaction
+              </p>
+              
+              <button 
+                onclick="
+                  const text = document.getElementById('demo-text');
+                  const btn = this;
+                  text.innerHTML = 'Button clicked! The demo is working. 🎉';
+                  text.style.color = '#00f0ff';
+                  btn.style.backgroundColor = '#00f0ff';
+                  btn.style.color = '#0a0a0a';
+                  btn.innerHTML = '✓ Success!';
+                  setTimeout(() => {
+                    text.innerHTML = 'You can add any HTML, CSS, or JavaScript here';
+                    text.style.color = '#ffd700';
+                  }, 2000);
+                "
+                style="
+                  background-color: #ff3366;
+                  color: white;
+                  padding: 14px 32px;
+                  border: none;
+                  border-radius: 25px;
+                  cursor: pointer;
+                  font-size: 16px;
+                  font-weight: bold;
+                  transition: all 0.3s;
+                  box-shadow: 0 4px 15px rgba(255,51,102,0.3);
+                "
+                onmouseover="this.style.transform = 'scale(1.05)'; this.style.boxShadow = '0 6px 20px rgba(255,51,102,0.5)';"
+                onmouseout="this.style.transform = 'scale(1)'; this.style.boxShadow = '0 4px 15px rgba(255,51,102,0.3)';"
+              >
+                Try Demo
+              </button>
+            </div>
+            
+            <p style="color: #64748b; margin-top: 40px; font-size: 14px;">
+              This is a placeholder demo. Replace the htmlContent prop with your own HTML/CSS/JS.
+            </p>
+          </div>
+        `}
       />
     </ServicePage>
   );
