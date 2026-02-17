@@ -1,5 +1,16 @@
 # Hero Images
 
+**DROP-AND-APPEAR WORKFLOW**: Drop a `.webp` file into this directory with the correct filename, refresh the page, and it appears automatically!
+
+## Quick Reference
+
+### Landing Page (Most Important!)
+- **File**: `landing-substrate.webp`
+- **Page**: Homepage `/`
+- **Just drop it here and refresh!**
+
+## All Hero Images
+
 Drop 16 hero images (.webp format) into this directory. These images appear at the top of each page with priority loading.
 
 ## Required Files:
@@ -27,3 +38,23 @@ Drop 16 hero images (.webp format) into this directory. These images appear at t
 - Will be used with dark gradient overlays
 - Loaded with priority={true} for above-fold performance
 - Fallback: `/images/utility/fallback-dark.svg` if missing
+
+## Example: Add Landing Page Hero
+
+```bash
+# 1. Get your image ready (1920x1080 WebP)
+# 2. Name it exactly: landing-substrate.webp
+# 3. Drop it into this directory
+# 4. Refresh homepage at http://localhost:3000/
+# 5. Done! Image appears with dark gradient overlay
+```
+
+## Troubleshooting
+
+**Image doesn't show?**
+- Check filename matches exactly (case-sensitive)
+- Ensure it's `.webp` format
+- Hard refresh browser (Ctrl+Shift+R)
+
+**Want full documentation?**
+See [IMAGES.md](../../IMAGES.md) in the root directory.
