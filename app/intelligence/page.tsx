@@ -37,9 +37,9 @@ export default function IntelligencePage() {
         { label: 'Coherence', value: 'MCS >0.90' },
       ]}
       features={[
-        { title: 'Solvey Scanner + PEE-\u03A9', description: 'Crisis detection and propaganda stripping in a single integrated scan. Measures \u03B4_H collapse risk and strips manipulation layers.' },
+        { title: 'Solvey Scanner + PEE-03', description: 'Crisis detection and propaganda stripping in a single integrated scan. Measures collapse risk and strips manipulation layers.' },
         { title: '5-Level Engine Stack', description: 'Full Agothean Engine Stack validation across Foundation, Processing, Integration, Oracle, and Meta layers.' },
-        { title: 'Intervention Strategies', description: 'Quantified intervention options ranked by \u0394\u03B4_H impact. Not advice mathematics.' },
+        { title: 'Intervention Strategies', description: 'Quantified intervention options ranked by collapse impact. Not advice mathematics.' },
         { title: 'MCS Coherence Scoring', description: 'Every report includes a Mereological Coherence Score measuring how well all analysis pieces fit together structurally.' },
       ]}
       faq={[
