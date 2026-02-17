@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ServicePage } from '@/components/agothe/service-page-template';
+import { LiveDemoSection } from '@/components/agothe/live-demo-section';
 
 export const metadata: Metadata = {
   title: 'Constraint Field Analysis (Solvey Scanner)',
@@ -45,6 +46,12 @@ export default function SolveyPage() {
         { label: 'CAPS Intelligence', href: '/intelligence' },
         { label: 'Research Synthesis', href: '/research' },
       ]}
-    />
+    >
+      <LiveDemoSection
+        title="Live Demo"
+        description="Interactive demonstration section - HTML content can be added here"
+        htmlContent=""
+      />
+    </ServicePage>
   );
 }
