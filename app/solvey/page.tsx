@@ -33,7 +33,7 @@ export default function SolveyPage() {
       features={[
         { title: 'Workflow Design', description: 'Complete mapping of your current processes and design of AI-optimized workflows with clear input/output specifications.' },
         { title: 'Multi-AI Orchestration', description: 'Coordination of multiple AI systems (Claude, GPT, Gemini, Perplexity) with defined roles and handoff protocols.' },
-        { title: 'Notion Integration', description: 'Deep integration with Notion as a knowledge hub \u2014 automated databases, content pipelines, and living documentation.' },
+        { title: 'Notion Integration', description: 'Deep integration with Notion as a knowledge hub automated databases, content pipelines, and living documentation.' },
         { title: 'Ongoing Maintenance', description: 'Monthly optimization based on usage patterns, model updates, and evolving workflow requirements.' },
       ]}
       faq={[
