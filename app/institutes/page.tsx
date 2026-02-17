@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ServicePage } from '@/components/agothe/service-page-template';
 
 export const metadata: Metadata = {
-  title: 'Agothe Institutes \u2014 Physical Education & Research Centers',
+  title: 'Agothe Institutes Physical Education & Research Centers',
   description: 'Physical education, healing, and research centers. Framework education programs, therapeutic practice spaces, and community integration.',
 };
 
@@ -12,7 +12,7 @@ export default function InstitutesPage() {
       accentColor="#94a3b8"
       title="Agothe Institutes"
       tagline="Physical education, healing, and research centers."
-      description="Agothe Institutes are the long-term vision for physical spaces where the Agothean framework is taught, practiced, and extended. Education, therapeutic practice, collaborative research, and community building \u2014 all under one architecture."
+      description="Agothe Institutes are the long-term vision for physical spaces where the Agothean framework is taught, practiced, and extended. Education, therapeutic practice, collaborative research, and community building all under one architecture."
       price="Long-term Vision"
       ctaLabel="Learn More"
       ctaHref="/contact"
@@ -35,9 +35,9 @@ export default function InstitutesPage() {
         { title: 'Community Integration', description: 'Residential and gathering spaces designed for the neurodivergent research community.' },
       ]}
       faq={[
-        { question: 'When will institutes open?', answer: 'This is a long-term vision (2028+). We\u2019re currently in the conceptual and planning phase.' },
-        { question: 'Where will they be located?', answer: 'Locations have not yet been determined. We\u2019re exploring options that balance accessibility, cost of living, and research community proximity.' },
-        { question: 'Can I be involved in planning?', answer: 'Yes. Contact us to express interest. We\u2019re building a planning advisory group from the framework community.' },
+        { question: 'When will institutes open?', answer: 'This is a long-term vision (2028+). Were currently in the conceptual and planning phase.' },
+        { question: 'Where will they be located?', answer: 'Locations have not yet been determined. We are exploring options that balance accessibility, cost of living, and research community proximity.' },
+        { question: 'Can I be involved in planning?', answer: 'Yes. Contact us to express interest. We are building a planning advisory group from the framework community.' },
         { question: 'How does this connect to online programs?', answer: 'The institutes will extend the online Framework Licensing program with in-person intensives, residencies, and collaborative research opportunities.' },
       ]}
       relatedServices={[
