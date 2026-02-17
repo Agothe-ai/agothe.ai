@@ -96,13 +96,13 @@ export function TextReveal({
         char === ' ' ? (
           <span key={i}>&nbsp;</span>
         ) : (
-          <span key={i} className="tr-wrap inline-block overflow-hidden">
+          <span key={i} className="tr-wrap inline-block overflow-hidden py-1">
             <span className="tr-unit inline-block">{char}</span>
           </span>
         )
       ))
     : children.split(' ').map((word, i, arr) => (
-        <span key={i} className="tr-wrap inline-block overflow-hidden">
+        <span key={i} className="tr-wrap inline-block overflow-hidden py-1">
           <span className="tr-unit inline-block">
             {word}
             {i < arr.length - 1 ? '\u00A0' : ''}
