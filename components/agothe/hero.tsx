@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 import { Counter } from './counter';
 import { LiveStatus } from './live-status';
-import { MeshGradientHero } from '@/components/motion/mesh-gradient-hero';
+import { SmartImage } from './smart-image';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const metrics = [
@@ -72,7 +72,19 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20">
-      <MeshGradientHero />
+      {/* Hero background image with dark overlay */}
+      <div className="absolute inset-0 z-0">
+        <SmartImage
+          src="/images/heroes/landing-substrate.webp"
+          alt="Agothe Intelligence substrate visualization"
+          fill
+          priority={true}
+          sizes="100vw"
+          className="object-cover"
+        />
+        {/* Dark gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-agothe-bg/60 via-agothe-bg/80 to-agothe-bg" />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <div className="relative inline-block rounded-2xl bg-[rgba(0,0,0,0.4)] px-8 py-6 backdrop-blur-sm">
