@@ -43,7 +43,7 @@ export function Hero() {
         y: '0%',
         opacity: 1,
         duration: 0.5,
-        stagger: 0.018,
+        stagger: 0.05,
         ease: 'back.out(1.7)',
       }, '-=0.2');
 
@@ -84,19 +84,15 @@ export function Hero() {
 
         <div className="relative inline-block rounded-2xl bg-[rgba(0,0,0,0.4)] px-8 py-6 backdrop-blur-sm">
           <h1 className="font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-7xl">
-            {headingSegments.map((seg, si) => (
-              <span key={si} className="inline-block whitespace-nowrap">
-                {seg.text.split('').map((char, ci) =>
-                  char === ' ' ? (
-                    <span key={`${si}-${ci}`}> </span>
-                  ) : (
-                    <span key={`${si}-${ci}`} className={`inline-block overflow-hidden ${seg.className}`}>
-                      <span className="hero-char inline-block">{char}</span>
-                    </span>
-                  )
-                )}
-              </span>
-            ))}
+            {headingSegments.map((seg, si) => {
+              const words = seg.text.split(' ');
+              return words.map((word, wi) => (
+                <span key={`${si}-${wi}`} className={`inline-block overflow-hidden ${seg.className}`}>
+                  <span className="hero-char inline-block">{word}</span>
+                  {wi < words.length - 1 && <span> </span>}
+                </span>
+              ));
+            })}
           </h1>
         </div>
 
