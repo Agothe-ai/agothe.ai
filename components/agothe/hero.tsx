@@ -34,19 +34,11 @@ export function Hero() {
       if (!el) return;
 
       const items = el.querySelectorAll('[data-hero-item]');
-
       gsap.set(items, { opacity: 0, y: 30 });
 
       const tl = gsap.timeline({ delay: 0.2 });
-
-      // Stagger fade-in for all hero items
-      items.forEach((item, i) => {
-        tl.to(item, { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.6, 
-          ease: 'power2.out' 
-        }, i === 0 ? 0 : '-=0.4');
+      Array.from(items).forEach((item, i) => {
+        tl.to(item, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, i === 0 ? '>' : '-=0.35');
       });
 
       cleanup = () => tl.kill();
