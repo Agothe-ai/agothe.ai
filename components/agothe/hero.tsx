@@ -7,11 +7,14 @@ import { SmartImage } from './smart-image';
 import { NewsletterSignup } from './newsletter-signup';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
-const metrics = [
-  { value: 0.9, prefix: 'MCS > ', suffix: '0', decimals: 1, label: 'Analysis Coherence' },
-  { value: 2, prefix: '< ', suffix: '', decimals: 0, label: 'Average Delivery', unit: 'Hours', countDown: true },
-  { value: 6, prefix: '', suffix: '', decimals: 0, label: 'Coordinated Network', unit: 'AI Systems' },
-  { value: 200, prefix: '', suffix: 'M+', decimals: 0, label: 'Research Access', unit: 'Papers' },
+// AI Systems for status display
+const aiSystems = [
+  { name: 'Perplexity', status: 'active', latency: 0.12 },
+  { name: 'Claude', status: 'active', latency: 0.08 },
+  { name: 'Gemini', status: 'active', latency: 0.15 },
+  { name: 'ChatGPT', status: 'active', latency: 0.11 },
+  { name: 'Grok', status: 'active', latency: 0.19 },
+  { name: 'Notion AI', status: 'active', latency: 0.14 },
 ];
 
 export function Hero() {
@@ -31,26 +34,20 @@ export function Hero() {
       if (!el) return;
 
       const items = el.querySelectorAll('[data-hero-item]');
-      const chars = el.querySelectorAll('.hero-char');
 
       gsap.set(items, { opacity: 0, y: 30 });
-      gsap.set(chars, { y: '110%', opacity: 0 });
 
       const tl = gsap.timeline({ delay: 0.2 });
 
-      tl.to(items[0], { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' });
-
-      tl.to(chars, {
-        y: '0%',
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.05,
-        ease: 'back.out(1.7)',
-      }, '-=0.2');
-
-      tl.to(items[1], { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.3');
-      tl.to(items[2], { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4');
-      tl.to(items[3], { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4');
+      // Stagger fade-in for all hero items
+      items.forEach((item, i) => {
+        tl.to(item, { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.6, 
+          ease: 'power2.out' 
+        }, i === 0 ? 0 : '-=0.4');
+      });
 
       cleanup = () => tl.kill();
     })();
@@ -58,11 +55,9 @@ export function Hero() {
     return () => cleanup?.();
   }, [reducedMotion]);
 
-
-
   return (
-    <section ref={containerRef} className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20">
-      {/* Hero background image with dark overlay */}
+    <section ref={containerRef} className="relative min-h-screen overflow-hidden px-8 py-20 md:px-16 lg:px-24">
+      {/* Phase 3: Background image with directional gradients */}
       <div className="absolute inset-0 z-0">
         <SmartImage
           src="/images/heroes/landing-substrate.webp"
@@ -72,103 +67,174 @@ export function Hero() {
           sizes="100vw"
           className="object-cover"
         />
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-agothe-bg/60 via-agothe-bg/80 to-agothe-bg" />
+        {/* Directional gradients: left-to-right (92% dark on left, 10% on right) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-agothe-bg/95 via-agothe-bg/60 to-agothe-bg/10" />
+        {/* Top-to-bottom gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-agothe-bg/40 via-transparent to-agothe-bg/80" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 text-left">
-        {/* Primary headline - left aligned */}
-        <div data-hero-item="" className="relative inline-block rounded-2xl bg-[rgba(0,0,0,0.4)] px-8 py-6 backdrop-blur-sm">
-          <h1 className="font-heading text-6xl font-black uppercase leading-none tracking-tight sm:text-7xl md:text-8xl lg:text-9xl">
-            <span className="text-agothe-white">BUILD WHAT</span>{' '}
-            <span className="text-agothe-teal">SURVIVES</span>
-          </h1>
-        </div>
-
-        {/* Subheading */}
-        <p
-          data-hero-item=""
-          className="mt-6 text-lg text-agothe-white md:text-xl"
-        >
-          6 AI systems. <span className="font-semibold text-agothe-teal">200M</span> research papers.<br />
-          Intelligence-grade analysis in hours.
-        </p>
-
-        {/* Secondary headline - right aligned */}
-        <div data-hero-item="" className="mt-12 flex justify-end">
-          <div className="relative inline-block rounded-2xl bg-[rgba(0,0,0,0.4)] px-8 py-6 backdrop-blur-sm">
-            <h2 className="font-heading text-5xl font-black uppercase leading-none tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
-              <span className="text-agothe-white">PREDICT</span>{' '}
-              <span className="text-agothe-danger">COLLAPSE</span>
-            </h2>
-          </div>
-        </div>
-
-        {/* Badges - partner logos */}
-        <p
-          data-hero-item=""
-          className="mt-6 text-xs text-agothe-muted/60"
-        >
-          S2ORC Partner &nbsp;&middot;&nbsp; Notion Certified &nbsp;&middot;&nbsp; OpenAI Ecosystem
-        </p>
-
-        <div data-hero-item="" className="mt-6">
-          <NewsletterSignup />
-        </div>
-      </div>
-
-      <div
-        data-hero-item=""
-        className="obsidian-glass-static relative z-10 mx-auto mt-12 w-full max-w-4xl rounded-lg border border-[rgba(0,240,255,0.15)] px-4 py-4"
-      >
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-2">
-          {metrics.map((m, i) => (
-            <div
-              key={m.label}
-              className={`flex flex-col items-center px-3 py-2 ${
-                i < metrics.length - 1
-                  ? 'md:border-r md:border-[rgba(255,255,255,0.1)]'
-                  : ''
-              }`}
+      {/* Phase 1: Two-column grid layout (55fr/45fr) */}
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-8 lg:grid-cols-[55fr_45fr] lg:gap-12">
+        
+        {/* Left Column: Text Stack */}
+        <div className="flex flex-col justify-center space-y-8">
+          
+          {/* Primary headline with hero-text-safe */}
+          <div data-hero-item="" className="hero-text-safe">
+            <h1 
+              className="font-heading uppercase leading-none tracking-tight text-agothe-white"
+              style={{ fontSize: 'clamp(3rem, 8vw, 7rem)' }}
             >
-              <div className="text-2xl font-bold text-agothe-white md:text-3xl">
-                <Counter
-                  target={m.value}
-                  prefix={m.prefix}
-                  suffix={m.suffix}
-                  decimals={m.decimals}
-                  countDown={m.countDown}
-                />
-              </div>
-              <p className="mt-1 text-center text-[9px] font-semibold uppercase tracking-[0.12em] text-agothe-muted">
-                {m.label}
-              </p>
-            </div>
-          ))}
-        </div>
+              <span className="block">BUILD WHAT</span>
+              <span className="block text-agothe-teal">SURVIVES</span>
+            </h1>
+          </div>
 
-        {/* System Status Indicator */}
-        <div className="mt-4 flex items-center justify-center gap-4 border-t border-[rgba(255,255,255,0.1)] pt-4 text-xs">
-          <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-green-500"></span>
-            <span className="font-mono text-[10px] uppercase tracking-wider text-agothe-white">
-              System Operational
+          {/* Badge */}
+          <div 
+            data-hero-item="" 
+            className="inline-flex items-center gap-2 self-start rounded-full border border-agothe-teal/30 bg-agothe-teal/10 px-4 py-2 backdrop-blur-sm"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-agothe-teal opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-agothe-teal" />
+            </span>
+            <span className="font-mono text-xs font-medium uppercase tracking-wider text-agothe-teal">
+              Live Analysis Active
             </span>
           </div>
-          <div className="flex items-center gap-1.5 font-mono text-[10px] text-agothe-muted">
-            <span>01</span>
-            <span>/</span>
-            <span>02</span>
-            <span>/</span>
-            <span>03</span>
+
+          {/* Subheading */}
+          <p
+            data-hero-item=""
+            className="text-agothe-white/90"
+            style={{ fontSize: 'clamp(1.125rem, 2vw, 1.5rem)', lineHeight: '1.6' }}
+          >
+            6 AI systems. <span className="font-semibold text-agothe-teal">200M</span> research papers.<br />
+            Intelligence-grade analysis in hours, not weeks.
+          </p>
+
+          {/* Partner badges */}
+          <p
+            data-hero-item=""
+            className="text-xs text-agothe-muted/70"
+          >
+            S2ORC Partner &nbsp;&middot;&nbsp; Notion Certified &nbsp;&middot;&nbsp; OpenAI Ecosystem
+          </p>
+
+          {/* Newsletter signup */}
+          <div data-hero-item="">
+            <NewsletterSignup />
           </div>
-          <div className="font-mono text-[10px] text-agothe-muted">
-            Stage: <span className="text-agothe-white">2</span>
+        </div>
+
+        {/* Right Column: Live Analysis Tile (Phase 2) */}
+        <div data-hero-item="" className="flex items-center justify-center lg:justify-end">
+          <div className="obsidian-glass w-full max-w-md rounded-2xl border border-agothe-teal/20 p-6 shadow-2xl lg:mr-8">
+            
+            {/* MCS Score with teal glow */}
+            <div className="mb-6 text-center">
+              <div 
+                className="font-heading font-black text-agothe-teal"
+                style={{ 
+                  fontSize: 'clamp(3rem, 5vw, 5rem)',
+                  textShadow: '0 0 30px rgba(0, 240, 255, 0.5), 0 0 60px rgba(0, 240, 255, 0.3)'
+                }}
+              >
+                <Counter target={0.92} prefix="" suffix="" decimals={2} />
+              </div>
+              <p className="mt-2 font-mono text-sm uppercase tracking-wider text-agothe-muted">
+                MCS Coherence
+              </p>
+            </div>
+
+            {/* MCS Progress Bar */}
+            <div className="mb-6">
+              <div className="relative h-3 overflow-hidden rounded-full bg-agothe-navy/50">
+                <div 
+                  className="h-full bg-gradient-to-r from-agothe-teal to-agothe-teal/80 transition-all duration-1000 ease-out"
+                  style={{ 
+                    width: '92%',
+                    boxShadow: '0 0 20px rgba(0, 240, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.3)'
+                  }}
+                />
+              </div>
+              <p className="mt-2 text-right font-mono text-xs text-agothe-muted">
+                92% convergence
+              </p>
+            </div>
+
+            {/* AI System Status Rows */}
+            <div className="space-y-2 border-t border-agothe-white/10 pt-4">
+              {aiSystems.map((system, idx) => (
+                <div 
+                  key={system.name}
+                  className="flex items-center justify-between"
+                  style={{ 
+                    animation: `fadeIn 0.5s ease-out ${0.1 * idx}s both` 
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <span 
+                      className="relative flex h-1.5 w-1.5"
+                      style={{ 
+                        animation: `pulse 2s ease-in-out infinite ${0.2 * idx}s` 
+                      }}
+                    >
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    </span>
+                    <span className="font-mono text-xs text-agothe-white">
+                      {system.name}
+                    </span>
+                  </div>
+                  <span className="font-mono text-xs text-agothe-muted">
+                    {system.latency}s
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Gold "Metallic Pulse confirmed" strip */}
+            <div className="mt-6 rounded-lg bg-gradient-to-r from-agothe-gold/20 to-agothe-gold/10 p-3 text-center">
+              <p className="font-mono text-xs font-bold uppercase tracking-wider text-agothe-gold">
+                ⚡ Metallic Pulse Confirmed
+              </p>
+              <p className="mt-1 font-mono text-[10px] text-agothe-gold/70">
+                94% convergence detected
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <LiveStatus />
+      {/* LiveStatus component at bottom */}
+      <div className="relative z-10">
+        <LiveStatus />
+      </div>
+
+      {/* CSS for animations */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -213,6 +213,41 @@
   50% { transform: scale(1.01); }
 }
 
+/* Hero text container — never clip descenders */
+.hero-text-safe {
+  line-height: 1.15;
+  padding-bottom: 0.35em;   /* descender buffer */
+  overflow: visible;         /* never clip */
+}
+
+/* All headings inside hero get room to breathe */
+.hero-text-safe h1,
+.hero-text-safe h2 {
+  overflow: visible;
+  /* iOS Safari fix: force hardware-layer so overflow doesn't clip */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Span/inline elements that hold large type */
+.hero-text-safe span {
+  display: block;
+  overflow: visible;
+  padding-bottom: 0.08em;   /* tight descender buffer per span */
+}
+
+/* Prevent parent containers from clipping overflow */
+[data-hero-item] {
+  overflow: visible;
+}
+
+/* Mobile-specific tightening — avoid letter collision while staying safe */
+@media (max-width: 640px) {
+  .hero-text-safe {
+    padding-bottom: 0.5em;  /* extra buffer on small screens */
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
