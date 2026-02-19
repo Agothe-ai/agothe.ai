@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 export default function VRPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/couture-chrysalis-unfurling.webp"
+      heroImageAlt="Agothe VR — therapeutic worldbuilding environment"
       accentColor="#10b981"
       title="Agothe VR"
       tagline="Anxiety becomes a room. Healing becomes architecture."

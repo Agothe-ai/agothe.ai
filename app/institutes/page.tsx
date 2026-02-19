@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 export default function InstitutesPage() {
   return (
     <ServicePage
+      heroImage="/images/heroes/about-origin-seed.webp"
+      heroImageAlt="Agothe Institutes — origin of embodied learning"
       accentColor="#94a3b8"
       title="Agothe Institutes"
       tagline="Physical education, healing, and research centers."

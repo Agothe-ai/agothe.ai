@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function IntelligencePage() {
   return (
     <ServicePage
-      heroImage="/images/heroes/about-origin-seed.webp"
+      heroImage="/images/heroes/case-studies-specimen-jars.webp"
       heroImageAlt="Eye of CAPS intelligence network"
       accentColor="#ffd700"
       title="CAPS Intelligence"

@@ -62,10 +62,14 @@ export function ContactPageContent() {
 
   return (
     <main className="min-h-screen bg-agothe-bg pt-24 pb-16">
-      <PageHero
-        title="Start with a question. End with intelligence."
-        subtitle="Tell us what you're navigating. We'll respond within 24 hours."
-      />
+      <section className="relative overflow-hidden px-6 py-24 md:py-32">
+        <PageHero
+          imageSrc="/images/heroes/contact-open-hand.webp"
+          imageAlt="Open hand — start a conversation with Agothe"
+          title="Start with a question. End with intelligence."
+          subtitle="Tell us what you're navigating. We'll respond within 24 hours."
+        />
+      </section>
       <section className="mx-auto max-w-xl px-4">
         <AnimatedSection>
           <AnimatedItem>

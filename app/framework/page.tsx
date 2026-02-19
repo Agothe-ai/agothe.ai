@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function FrameworkPage() {
   return (
     <ServicePage
-      heroImage="/images/heroes/about-origin-seed.webp"
+      heroImage="/images/heroes/pricing-three-intensities.webp"
       heroImageAlt="Framework architecture organism"
       accentColor="#06b6d4"
       title="Framework Licensing"

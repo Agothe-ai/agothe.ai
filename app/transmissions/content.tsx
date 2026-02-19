@@ -51,7 +51,7 @@ export function TransmissionsContent() {
   return (
     <main className="pt-20">
       <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <PageHero imageSrc="/images/heroes/transmissions-signal.webp" imageAlt="Signal transmissions from the Codex" />
+        <PageHero imageSrc="/images/heroes/media-prism-organism.webp" imageAlt="Signal transmissions from the Codex" />
         <AnimatedSection className="relative z-10 mx-auto max-w-3xl text-center">
           <AnimatedItem>
             <h1 className="font-heading text-4xl font-bold text-agothe-white md:text-6xl">
