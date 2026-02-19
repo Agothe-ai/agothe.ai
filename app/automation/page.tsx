@@ -23,7 +23,7 @@ export default function AutomationPage() {
       problemItems={[
         'Most teams use AI as a chat interface, not a system',
         'Disconnected tools create information silos, not intelligence',
-        'Generic automation templates don't match real workflow complexity',
+        'Generic automation templates do not match real workflow complexity',
         'Without orchestration, multiple AI tools fight instead of coordinate',
         'Manual handoffs between AI systems waste 60% of potential value',
       ]}
@@ -39,7 +39,7 @@ export default function AutomationPage() {
         { question: 'What kinds of workflows can you automate?', answer: 'Research pipelines, content production, client onboarding, report generation, competitive analysis, knowledge management, and any process involving multiple AI tools.' },
         { question: 'Do I need technical expertise?', answer: 'No. We handle all technical implementation. You provide domain knowledge and requirements; we build the system.' },
         { question: 'How long does a project take?', answer: '1-2 weeks for simple automations, 2-4 weeks for complex multi-AI orchestrations. Rush delivery available.' },
-        { question: 'What's included in maintenance?', answer: 'Monthly review of workflow performance, model updates, prompt optimization, and up to 4 hours of modifications per month.' },
+        { question: 'What is included in maintenance?', answer: 'Monthly review of workflow performance, model updates, prompt optimization, and up to 4 hours of modifications per month.' },
       ]}
       relatedServices={[
         { label: 'CAPS Intelligence', href: '/intelligence' },
