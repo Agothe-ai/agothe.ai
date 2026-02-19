@@ -2,7 +2,6 @@
 
 import { useState, FormEvent } from 'react';
 import { AnimatedSection, AnimatedItem } from '@/components/agothe/animated-section';
-import { supabase } from '@/lib/supabase';
 import { PageHero } from '@/components/agothe/page-hero';
 
 const services = [
@@ -36,19 +35,8 @@ export function ContactPageContent() {
     setStatus('loading');
     setErrorMsg('');
 
-    const { error } = await supabase.from('contact_submissions').insert({
-      name: form.name.trim(),
-      email: form.email.trim().toLowerCase(),
-      service_interest: form.service,
-      message: form.message.trim(),
-    });
-
-    if (error) {
-      setStatus('error');
-      setErrorMsg('Something went wrong. Please try again.');
-    } else {
-      // Fire notification email to research@agothe.ai (non-blocking)
-      fetch('/api/send-notification', {
+    try {
+      const res = await fetch('/api/send-notification', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -58,43 +46,37 @@ export function ContactPageContent() {
           service: form.service,
           message: form.message.trim(),
         }),
-      }).catch(err => console.error('Notification error:', err));
+      });
+
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
 
       setStatus('success');
+    } catch (err) {
+      console.error('Submission error:', err);
+      setStatus('error');
+      setErrorMsg('Something went wrong. Please try again or email research@agothe.ai directly.');
     }
   }
 
   return (
-    <main className="pt-20">
-      <section className="relative overflow-hidden px-6 py-24 md:py-32">
-        <PageHero imageSrc="/images/heroes/contact-open-hand.webp" imageAlt="Open hand welcoming contact" />
-        <AnimatedSection className="relative z-10 mx-auto max-w-3xl text-center">
-          <AnimatedItem>
-            <h1 className="font-heading text-4xl font-bold text-agothe-white md:text-6xl">
-              Start with a question. End with intelligence.
-            </h1>
-          </AnimatedItem>
-          <AnimatedItem>
-            <p className="mx-auto mt-4 max-w-xl text-lg text-agothe-muted">
-              Tell us what you&apos;re navigating. We&apos;ll respond within 24 hours.
-            </p>
-          </AnimatedItem>
-        </AnimatedSection>
-      </section>
-
-      <section className="px-6 pb-24 md:pb-32">
-        <AnimatedSection className="mx-auto max-w-xl">
+    <main className="min-h-screen bg-agothe-bg pt-24 pb-16">
+      <PageHero
+        title="Start with a question. End with intelligence."
+        subtitle="Tell us what you're navigating. We'll respond within 24 hours."
+      />
+      <section className="mx-auto max-w-xl px-4">
+        <AnimatedSection>
           <AnimatedItem>
             {status === 'success' ? (
-              <div className="obsidian-glass-static rounded-xl p-8 text-center md:p-12">
-                <p className="font-mono text-xl text-agothe-teal">
-                  Received. The network will respond within 24 hours.
-                </p>
+              <div className="rounded-xl border border-agothe-teal/30 bg-agothe-teal/5 p-8 text-center">
+                <p className="text-agothe-teal font-semibold">Received. The network will respond within 24 hours.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="obsidian-glass-static space-y-5 rounded-xl p-8 md:p-10">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="contact-name" className="mb-1.5 block text-xs uppercase tracking-wider text-agothe-muted">
+                  <label htmlFor="contact-name" className="mb-1.5 block text-xs font-medium text-agothe-muted uppercase tracking-wider">
                     Name (optional)
                   </label>
                   <input
@@ -108,7 +90,7 @@ export function ContactPageContent() {
                 </div>
 
                 <div>
-                  <label htmlFor="contact-email" className="mb-1.5 block text-xs uppercase tracking-wider text-agothe-muted">
+                  <label htmlFor="contact-email" className="mb-1.5 block text-xs font-medium text-agothe-muted uppercase tracking-wider">
                     Email
                   </label>
                   <input
@@ -123,7 +105,7 @@ export function ContactPageContent() {
                 </div>
 
                 <div>
-                  <label htmlFor="contact-service" className="mb-1.5 block text-xs uppercase tracking-wider text-agothe-muted">
+                  <label htmlFor="contact-service" className="mb-1.5 block text-xs font-medium text-agothe-muted uppercase tracking-wider">
                     Service Interest
                   </label>
                   <select
@@ -140,7 +122,7 @@ export function ContactPageContent() {
                 </div>
 
                 <div>
-                  <label htmlFor="contact-message" className="mb-1.5 block text-xs uppercase tracking-wider text-agothe-muted">
+                  <label htmlFor="contact-message" className="mb-1.5 block text-xs font-medium text-agothe-muted uppercase tracking-wider">
                     Message
                   </label>
                   <textarea
@@ -155,7 +137,7 @@ export function ContactPageContent() {
                 </div>
 
                 {status === 'error' && (
-                  <p className="text-sm text-agothe-danger">{errorMsg}</p>
+                  <p className="text-sm text-red-400">{errorMsg}</p>
                 )}
 
                 <button
