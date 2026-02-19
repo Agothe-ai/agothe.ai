@@ -97,7 +97,7 @@ export function CAPSReportPreview() {
       <AnimatedSection className="mx-auto max-w-6xl">
         <SectionHeading
           title="See a Real CAPS Report"
-          subtitle="Sample data from our U.S.\u2013Iran Crisis Analysis."
+          subtitle="Sample data from our U.S. 2013 Iran Crisis Analysis."
         />
 
         <div className="grid gap-6 md:grid-cols-3">
@@ -116,7 +116,7 @@ export function CAPSReportPreview() {
           <AnimatedItem>
             <div className="obsidian-glass rounded-lg p-6">
               <h3 className="mb-4 font-heading text-base font-bold text-agothe-danger">
-                PEE-\u03A9 Analysis
+                PEE-03 Analysis
               </h3>
               <PropagandaBar />
               <p className="mt-3 text-xs leading-relaxed text-agothe-muted">
@@ -135,7 +135,7 @@ export function CAPSReportPreview() {
                   <li key={i} className="flex items-center justify-between gap-2">
                     <span className="text-xs text-agothe-muted">{item.name}</span>
                     <span className="shrink-0 font-mono text-sm font-bold text-agothe-teal">
-                      \u0394\u03B4_H: {item.impact}
+                      Collapse Index: {item.impact}
                     </span>
                   </li>
                 ))}
@@ -146,7 +146,7 @@ export function CAPSReportPreview() {
 
         <AnimatedItem>
           <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-agothe-muted">
-            This is a sample from our U.S.\u2013Iran Crisis Analysis. Full reports include
+            This is a sample from our U.S. 2013 Iran Crisis Analysis. Full reports include
             15+ pages of cross-validated intelligence.
           </p>
           <div className="mt-6 text-center">
