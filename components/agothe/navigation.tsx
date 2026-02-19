@@ -60,7 +60,6 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
     clearTimeout(timeout.current);
     setOpen(true);
   }
-
   function leave() {
     timeout.current = setTimeout(() => setOpen(false), 150);
   }
@@ -69,30 +68,37 @@ function DesktopDropdown({ group }: { group: NavGroup }) {
     <div className="relative" onMouseEnter={enter} onMouseLeave={leave}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1 text-sm text-agothe-muted transition-colors hover:text-agothe-white"
+        className="flex items-center gap-1 text-xs font-medium text-agothe-muted transition-colors hover:text-agothe-teal tracking-wide"
         aria-expanded={open}
       >
         {group.label}
-        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown
+          size={12}
+          className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        />
       </button>
-
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
+            exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
-            className="obsidian-glass-static absolute left-0 top-full z-50 mt-2 min-w-[280px] rounded-lg p-2"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 min-w-[220px] rounded-xl border border-white/10 z-50 overflow-hidden"
+            style={{
+              background: 'rgba(10, 22, 40, 0.92)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(0,240,255,0.07)',
+            }}
           >
             {group.items.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-2 rounded-md px-3 py-2 text-sm text-agothe-muted transition-colors hover:bg-[rgba(0,240,255,0.05)] hover:text-agothe-white"
+                className="flex items-center gap-2 px-4 py-2.5 text-xs text-agothe-muted transition-colors hover:bg-[rgba(0,240,255,0.06)] hover:text-agothe-teal"
               >
-                <span className="block h-1 w-1 shrink-0 rounded-full bg-agothe-teal/50" />
                 {item.label}
               </Link>
             ))}
@@ -116,9 +122,7 @@ function MobileMenu({
     } else {
       document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
+    return () => { document.body.style.overflow = ''; };
   }, [open]);
 
   return (
@@ -128,22 +132,25 @@ function MobileMenu({
           initial={{ opacity: 0, x: '100%' }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: '100%' }}
-          transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="fixed inset-0 z-50 overflow-y-auto bg-[rgba(10,22,40,0.98)] backdrop-blur-xl"
+          transition={{ duration: 0.25, ease: 'easeInOut' }}
+          className="fixed inset-0 z-50 flex flex-col overflow-y-auto"
+          style={{
+            background: 'rgba(10, 10, 10, 0.97)',
+            backdropFilter: 'blur(24px)',
+          }}
         >
-          <div className="flex items-center justify-between px-6 py-4">
-            <Link href="/" onClick={onClose} className="font-heading text-lg font-bold text-agothe-teal">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+            <Link href="/" onClick={onClose} className="font-heading font-bold text-lg text-agothe-teal tracking-tight">
               agothe.ai
             </Link>
-            <button onClick={onClose} className="text-agothe-white" aria-label="Close menu">
-              <X className="h-6 w-6" />
+            <button onClick={onClose} className="text-agothe-muted hover:text-agothe-white">
+              <X size={20} />
             </button>
           </div>
-
-          <nav className="px-6 pb-12 pt-4">
+          <div className="flex-1 px-6 py-6 space-y-6">
             {navGroups.map((group) => (
-              <div key={group.label} className="mb-8">
-                <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-agothe-muted">
+              <div key={group.label}>
+                <p className="text-xs uppercase tracking-widest text-agothe-teal font-semibold mb-3">
                   {group.label}
                 </p>
                 <div className="space-y-1">
@@ -152,7 +159,7 @@ function MobileMenu({
                       key={item.href}
                       href={item.href}
                       onClick={onClose}
-                      className="block rounded-md px-3 py-2.5 text-base text-agothe-white transition-colors hover:bg-agothe-teal/10"
+                      className="block py-2 text-sm text-agothe-muted hover:text-agothe-white transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -160,22 +167,23 @@ function MobileMenu({
                 </div>
               </div>
             ))}
-
+          </div>
+          <div className="px-6 pb-8 flex flex-col gap-3">
             <Link
               href="/demo"
               onClick={onClose}
-              className="mt-4 block rounded-full border border-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-teal transition-colors hover:bg-agothe-teal/10"
+              className="block w-full text-center py-3 rounded-lg border border-agothe-teal text-agothe-teal text-sm font-medium hover:bg-agothe-teal/10 transition-colors"
             >
               Schedule Demo
             </Link>
             <Link
-              href="/contact"
+              href="/intelligence"
               onClick={onClose}
-              className="mt-3 block rounded-full bg-agothe-teal py-3.5 text-center text-sm font-semibold text-agothe-void transition-colors hover:bg-agothe-teal/90"
+              className="block w-full text-center py-3 rounded-lg bg-agothe-teal/20 border border-agothe-teal/40 text-agothe-white text-sm font-medium hover:bg-agothe-teal/30 transition-colors"
             >
               Commission Report
             </Link>
-          </nav>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -197,45 +205,60 @@ export function Navigation() {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'border-b border-[rgba(0,240,255,0.1)] bg-[rgba(10,22,40,0.85)] backdrop-blur-xl shadow-lg shadow-black/20'
-            : 'bg-transparent'
+            ? 'border-b border-white/10'
+            : 'border-b border-transparent'
         }`}
+        style={{
+          background: scrolled
+            ? 'rgba(10, 22, 40, 0.88)'
+            : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(150%)' : 'none',
+        }}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <Link href="/" className="font-heading text-lg font-bold text-agothe-teal">
+        <div className="flex items-center justify-between px-6 lg:px-12 h-16">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="font-heading font-bold text-xl text-agothe-teal tracking-tight hover:opacity-80 transition-opacity"
+            style={{ textShadow: '0 0 20px rgba(0,240,255,0.4)' }}
+          >
             agothe.ai
           </Link>
 
-          <nav className="hidden items-center gap-8 lg:flex">
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-8">
             {navGroups.map((group) => (
               <DesktopDropdown key={group.label} group={group} />
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/demo"
-              className="hidden rounded-full border border-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-teal transition-all hover:bg-agothe-teal/10 lg:inline-flex"
+              className="px-4 py-2 rounded-lg border border-agothe-teal text-agothe-teal text-xs font-medium tracking-wide hover:bg-agothe-teal/10 transition-all duration-200"
             >
               Schedule Demo
             </Link>
             <Link
-              href="/contact"
-              className="hidden rounded-full bg-agothe-teal px-5 py-2 text-sm font-semibold text-agothe-void transition-all hover:shadow-lg hover:shadow-agothe-teal/20 lg:inline-flex"
+              href="/intelligence"
+              className="px-4 py-2 rounded-lg bg-agothe-teal/20 border border-agothe-teal/40 text-agothe-white text-xs font-medium tracking-wide hover:bg-agothe-teal/30 transition-all duration-200"
             >
               Commission Report
             </Link>
-
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="text-agothe-white lg:hidden"
-              aria-label="Open menu"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
           </div>
+
+          {/* Mobile Hamburger */}
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="text-agothe-white lg:hidden"
+            aria-label="Open menu"
+          >
+            <Menu size={22} />
+          </button>
         </div>
       </header>
 
