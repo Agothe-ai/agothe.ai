@@ -10,10 +10,10 @@ export default function SolveyScannerPage() {
   return (
     <main className="pt-20">
       <LiveDemoSection
-  title="Solvey Scanner — Live Monitor"
-  description="Constraint field simulation with animated domains, hindcast timeline, and alert feed."
-  minHeight="900px"
-  htmlContent={`
+        title="Solvey Scanner — Live Monitor"
+        description="Constraint field simulation with animated domains, hindcast timeline, and alert feed."
+        minHeight="900px"
+        htmlContent={`
 <div class="solvey-root">
   <style>
     .solvey-root * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -482,9 +482,6 @@ export default function SolveyScannerPage() {
     })();
   </script>
 </div>
-`}
-/>
-
 `}
       />
     </main>
