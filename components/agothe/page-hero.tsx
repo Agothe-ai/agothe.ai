@@ -1,12 +1,13 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { SmartImage } from './smart-image';
 
 interface PageHeroProps {
   imageSrc?: string;
   imageAlt?: string;
-  title?: React.ReactNode | string;
-  subtitle?: React.ReactNode | string;
+  title?: ReactNode;
+  subtitle?: ReactNode;
 }
 
 export function PageHero({ imageSrc, imageAlt, title, subtitle }: PageHeroProps) {
