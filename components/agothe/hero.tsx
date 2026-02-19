@@ -161,7 +161,7 @@ export function Hero() {
                 >
                   <div className="font-mono text-lg lg:text-xl font-bold text-agothe-white tracking-tight leading-tight">
                     <Counter
-                      value={m.value}
+                      target={m.value}
                       prefix={m.prefix}
                       suffix={m.suffix}
                       decimals={m.decimals}
