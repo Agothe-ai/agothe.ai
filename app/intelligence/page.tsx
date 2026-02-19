@@ -43,7 +43,7 @@ export default function IntelligencePage() {
         { title: 'MCS Coherence Scoring', description: 'Every report includes a Mereological Coherence Score measuring how well all analysis pieces fit together structurally.' },
       ]}
       faq={[
-        { question: 'What is MCS >0.90?', answer: 'Mereological Coherence Score measures structural soundness. A score above 0.90 means all analysis components fit together with high mathematical consistency. If we can achieve it, we don't ship.' },
+        { question: 'What is MCS >0.90?', answer: "Mereological Coherence Score measures structural soundness. A score above 0.90 means all analysis components fit together with high mathematical consistency. If we can't achieve it, we don't ship." },
         { question: 'What topics can you analyze?', answer: 'Any system with measurable constraints: geopolitical crises, organizational stress, market dynamics, policy analysis, technology disruption, climate scenarios, and more.' },
         { question: 'How fast is delivery?', answer: 'Under 4 hours for standard CAPS Intelligence. Rush delivery under 2 hours available for active crises.' },
         { question: 'Can I see a sample report?', answer: 'Yes. Our homepage features real demo reports including U.S. Iran crisis analysis and COP30 climate analysis.' },
