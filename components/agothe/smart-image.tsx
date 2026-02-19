@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface SmartImageProps {
@@ -16,6 +16,21 @@ interface SmartImageProps {
   objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
 }
 
+// Strip any extension from a path and return the base path
+function getBasePath(src: string): string {
+  return src.replace(/\.(webp|jpg|jpeg|png|gif|avif)$/i, '');
+}
+
+// Given a base path, return all format variants to try in order
+function getFormatVariants(basePath: string): string[] {
+  return [
+    `${basePath}.webp`,
+    `${basePath}.jpg`,
+    `${basePath}.jpeg`,
+    `${basePath}.png`,
+  ];
+}
+
 export function SmartImage({
   src,
   alt,
@@ -28,12 +43,27 @@ export function SmartImage({
   fallbackSrc = '/images/utility/fallback-dark.svg',
   objectFit = 'cover',
 }: SmartImageProps) {
+  const basePath = getBasePath(src);
+  const variants = getFormatVariants(basePath);
+
   const [imgSrc, setImgSrc] = useState(src);
-  const [hasError, setHasError] = useState(false);
+  const [variantIndex, setVariantIndex] = useState(0);
+  const [exhausted, setExhausted] = useState(false);
+
+  // If src prop changes, reset
+  useEffect(() => {
+    setImgSrc(src);
+    setVariantIndex(0);
+    setExhausted(false);
+  }, [src]);
 
   const handleError = () => {
-    if (!hasError) {
-      setHasError(true);
+    const nextIndex = variantIndex + 1;
+    if (nextIndex < variants.length) {
+      setVariantIndex(nextIndex);
+      setImgSrc(variants[nextIndex]);
+    } else {
+      setExhausted(true);
       setImgSrc(fallbackSrc);
     }
   };
