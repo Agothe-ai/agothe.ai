@@ -24,7 +24,7 @@ export default function SolveyPage() {
       problemItems={[
         'Most teams use AI as a chat interface, not a system',
         'Disconnected tools create information silos, not intelligence',
-        'Generic automation templates don't match real workflow complexity',
+        'Generic automation templates do not match real workflow complexity',
         'Without orchestration, multiple AI tools fight instead of coordinate',
         'Manual handoffs between AI systems waste 60% of potential value',
       ]}
