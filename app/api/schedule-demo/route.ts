@@ -64,8 +64,44 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Send confirmation email
-    // TODO: Notify team via Slack/email
+    // Send notification email to research@agothe.ai (non-blocking)
+    const resendKey = process.env.RESEND_API_KEY;
+    if (resendKey) {
+      const challengesList = Array.isArray(body.challenges)
+        ? body.challenges.join(', ')
+        : body.challenges;
+
+      fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${resendKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'Agothe AI <noreply@agothe.ai>',
+          to: ['research@agothe.ai'],
+          subject: `[Demo Request] ${body.name} — ${body.company}`,
+          html: `
+            <h2 style="color:#00f0ff;font-family:monospace">New Demo Request</h2>
+            <p><strong>Name:</strong> ${body.name}</p>
+            <p><strong>Email:</strong> ${body.email}</p>
+            <p><strong>Company:</strong> ${body.company}</p>
+            <p><strong>Role:</strong> ${body.role}</p>
+            <p><strong>Phone:</strong> ${body.phone || 'Not provided'}</p>
+            <p><strong>Challenges:</strong> ${challengesList}</p>
+            <p><strong>Company Size:</strong> ${body.companySize}</p>
+            <p><strong>Current Tools:</strong> ${body.currentTools || 'Not provided'}</p>
+            <p><strong>Timeline:</strong> ${body.timeline}</p>
+            <p><strong>Budget Range:</strong> ${body.budgetRange}</p>
+            <p><strong>Preferred Date:</strong> ${body.preferredDate || 'Not specified'}</p>
+            <p><strong>Preferred Time:</strong> ${body.preferredTime || 'Not specified'}</p>
+            <p><strong>Meeting Type:</strong> ${body.meetingType}</p>
+            <p><strong>Additional Notes:</strong> ${body.additionalNotes || 'None'}</p>
+            <p style="color:#999;font-size:12px">Submitted at ${new Date().toISOString()} — ID: ${data.id}</p>
+          `,
+        }),
+      }).catch(err => console.error('Resend notification error:', err));
+    }
 
     return NextResponse.json(
       {
