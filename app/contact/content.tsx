@@ -9,7 +9,7 @@ const services = [
   'Research Synthesis',
   'CAPS Intelligence',
   'Constraint Analysis (Solvey)',
-  'Propaganda Detection (PEE-\u03A9)',
+  'Propaganda Detection (PEE-Ω)',
   'AI Automation',
   'Mathematical Simulation (Valentine)',
   'Framework Licensing',
@@ -47,6 +47,19 @@ export function ContactPageContent() {
       setStatus('error');
       setErrorMsg('Something went wrong. Please try again.');
     } else {
+      // Fire notification email to research@agothe.ai (non-blocking)
+      fetch('/api/send-notification', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'contact',
+          name: form.name.trim(),
+          email: form.email.trim().toLowerCase(),
+          service: form.service,
+          message: form.message.trim(),
+        }),
+      }).catch(err => console.error('Notification error:', err));
+
       setStatus('success');
     }
   }
