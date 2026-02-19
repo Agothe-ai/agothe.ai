@@ -39,7 +39,7 @@ export default function VRPage() {
       faq={[
         { question: 'When will Agothe VR be available?', answer: 'Currently in development. Join the waitlist for early access and development updates.' },
         { question: 'Do I need VR hardware?', answer: 'Initial release will support standard VR headsets. Future versions may include browser-based and AR experiences.' },
-        { question: 'Is this a replacement for therapy?', answer: 'No. Agothe VR is a therapeutic tool, not a replacement for professional clinical care. It's designed to complement existing therapeutic approaches.' },
+        { question: 'Is this a replacement for therapy?', answer: 'No. Agothe VR is a therapeutic tool, not a replacement for professional clinical care. It is designed to complement existing therapeutic approaches.' },
         { question: 'How is the neurodivergent design validated?', answer: 'Through extensive consultation with neurodivergent researchers and practitioners, including our co-founder Armani Gomez.' },
       ]}
       relatedServices={[
