@@ -7,8 +7,8 @@ import { LiveStatus } from './live-status';
 import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const metrics = [
-  { value: 0.9, prefix: 'MCS > ', suffix: '0', decimals: 1, label: 'Analysis Coherence' },
-  { value: 2, prefix: '< ', suffix: '', decimals: 0, label: 'Avg Delivery', unit: 'Hours', countDown: true },
+  { value: 0.97, prefix: 'MCS > ', suffix: '', decimals: 2, label: 'Analysis Coherence' },
+  { value: 3, prefix: '< ', suffix: '', decimals: 0, label: 'Avg Delivery', unit: 'Hours', countDown: true },
   { value: 6, prefix: '', suffix: '', decimals: 0, label: 'Coordinated Network', unit: 'AI Systems' },
   { value: 200, prefix: '', suffix: 'M+', decimals: 0, label: 'Research Access', unit: 'Papers' },
 ];
@@ -51,144 +51,159 @@ export function Hero() {
       ref={containerRef}
       className="relative min-h-screen flex flex-col overflow-hidden bg-agothe-void"
     >
-      {/* Left gradient fade for text legibility */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 z-10 bg-gradient-to-r from-agothe-void via-agothe-void/80 to-transparent" />
-      {/* Right gradient fade for text legibility */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 z-10 bg-gradient-to-l from-agothe-void via-agothe-void/80 to-transparent" />
-      {/* Bottom gradient to blend into next section */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-48 z-10 bg-gradient-to-t from-agothe-void to-transparent" />
-
-      {/* Center hero image - full bleed background */}
-      <div className="absolute inset-0 flex items-center justify-center z-0">
-        <div
-          className="relative w-full max-w-2xl h-full"
-          style={{ filter: 'drop-shadow(0 0 80px rgba(0,240,255,0.35)) drop-shadow(0 0 30px rgba(0,240,255,0.2))' }}
-        >
-          <Image
-            src="/images/heroes/landing-substrate.webp"
-            alt="Agothe Core"
-            fill
-            priority
-            className="object-contain"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </div>
+      {/* =====================
+          BACKGROUND IMAGE - full bleed, no overlays
+      ===================== */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/heroes/landing-substrate.webp"
+          alt="Agothe Core"
+          fill
+          priority
+          className="object-cover object-center"
+          sizes="100vw"
+        />
       </div>
 
-      {/* 3-Column Hero Grid */}
-      <div className="relative z-20 flex-1 grid grid-cols-[1fr_400px_1fr] gap-0 pt-28 pb-8 px-8 lg:px-16">
+      {/* =====================
+          CONTENT LAYER
+      ===================== */}
+      <div className="relative z-10 flex flex-col min-h-screen">
 
-        {/* LEFT COLUMN - BUILD WHAT SURVIVES */}
-        <div
-          data-hero-item
-          className="flex flex-col justify-center items-end text-right pr-8"
-        >
-          <h1 className="font-heading font-black uppercase leading-none tracking-tighter text-7xl xl:text-8xl 2xl:text-9xl">
-            <span className="block text-agothe-white overflow-hidden">
-              <span className="hero-char block">BUILD</span>
-            </span>
-            <span className="block text-agothe-white overflow-hidden">
-              <span className="hero-char block">WHAT</span>
-            </span>
-            <span className="block overflow-hidden">
-              <span className="hero-char block text-agothe-teal" style={{ textShadow: '0 0 40px rgba(0,240,255,0.6)' }}>SURVIVES</span>
-            </span>
-          </h1>
-          <p
+        {/* Spacer for navbar */}
+        <div className="h-20" />
+
+        {/* Hero text grid - 3 col on desktop, stacked on mobile */}
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-[1fr_360px_1fr] px-6 lg:px-12 pt-8 pb-4 gap-0">
+
+          {/* LEFT - BUILD WHAT SURVIVES */}
+          <div
             data-hero-item
-            className="mt-6 max-w-xs text-sm text-agothe-muted leading-relaxed text-right"
+            className="flex flex-col justify-center items-start lg:items-end lg:text-right lg:pr-8 mb-6 lg:mb-0"
           >
-            6 AI systems.&nbsp; 200M research papers.{' '}
-            Intelligence&#8209;grade analysis in hours.
-          </p>
-        </div>
-
-        {/* CENTER COLUMN - empty, image renders behind via absolute */}
-        <div className="" />
-
-        {/* RIGHT COLUMN - PREDICT COLLAPSE */}
-        <div
-          data-hero-item
-          className="flex flex-col justify-center items-start text-left pl-8"
-        >
-          <h2 className="font-heading font-black uppercase leading-none tracking-tighter text-7xl xl:text-8xl 2xl:text-9xl">
-            <span className="block text-agothe-white overflow-hidden">
-              <span className="hero-char block">PREDICT</span>
-            </span>
-            <span className="block overflow-hidden">
-              <span
-                className="hero-char block text-agothe-danger"
-                style={{ textShadow: '0 0 40px rgba(239,68,68,0.6)' }}
-              >
-                COLLAPSE
+            <h1 className="font-heading font-black uppercase leading-none tracking-tighter text-6xl xl:text-7xl 2xl:text-8xl drop-shadow-2xl">
+              <span className="block text-agothe-white overflow-hidden">
+                <span className="hero-char block">BUILD WHAT</span>
               </span>
-            </span>
-          </h2>
-          <p
-            data-hero-item
-            className="mt-6 max-w-xs text-sm text-agothe-muted leading-relaxed text-left"
-          >
-            Agothe detects systemic failure before it reaches the surface.
-            Crisis intelligence. Delivered.
-          </p>
-        </div>
-      </div>
-
-      {/* Badge Row */}
-      <div
-        data-hero-item
-        className="relative z-20 flex items-center justify-center gap-3 pb-6"
-      >
-        {badges.map((badge, i) => (
-          <span
-            key={badge}
-            className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-agothe-muted tracking-wide"
-          >
-            {badge}
-          </span>
-        ))}
-      </div>
-
-      {/* Glass HUD Metrics Bar */}
-      <div
-        data-hero-item
-        className="relative z-20 mx-4 mb-6 lg:mx-16 rounded-2xl border border-agothe-teal/20 overflow-hidden"
-        style={{
-          background: 'rgba(10, 22, 40, 0.75)',
-          backdropFilter: 'blur(24px) saturate(150%)',
-          WebkitBackdropFilter: 'blur(24px) saturate(150%)',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(0,240,255,0.07)',
-        }}
-      >
-        <div className="grid grid-cols-4 divide-x divide-white/10">
-          {metrics.map((m, i) => (
-            <div
-              key={m.label}
-              className="flex flex-col items-center justify-center py-5 px-4 gap-1"
+              <span className="block overflow-hidden">
+                <span
+                  className="hero-char block text-agothe-teal"
+                  style={{ textShadow: '0 0 40px rgba(0,240,255,0.8), 0 2px 4px rgba(0,0,0,0.9)' }}
+                >
+                  SURVIVES
+                </span>
+              </span>
+            </h1>
+            <p
+              data-hero-item
+              className="mt-4 max-w-xs text-sm text-white/80 leading-relaxed drop-shadow-lg"
+              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
             >
-              <div className="font-mono text-2xl font-bold text-agothe-white tracking-tight">
-                <Counter
-                  value={m.value}
-                  prefix={m.prefix}
-                  suffix={m.suffix}
-                  decimals={m.decimals}
-                  countDown={m.countDown}
-                />
-                {m.unit && (
-                  <span className="ml-1 text-sm font-normal text-agothe-muted">{m.unit}</span>
-                )}
-              </div>
-              <div className="text-xs uppercase tracking-widest text-agothe-muted">
-                {m.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+              6 AI systems.&nbsp;200M research papers.{' '}
+              Intelligence&#8209;grade analysis in hours.
+            </p>
+          </div>
 
-      {/* System Status */}
-      <div className="relative z-20 flex justify-center pb-6">
-        <LiveStatus />
+          {/* CENTER - empty spacer column (image behind) */}
+          <div className="hidden lg:block" />
+
+          {/* RIGHT - PREDICT COLLAPSE */}
+          <div
+            data-hero-item
+            className="flex flex-col justify-center items-start lg:pl-8"
+          >
+            <h2 className="font-heading font-black uppercase leading-none tracking-tighter text-6xl xl:text-7xl 2xl:text-8xl drop-shadow-2xl">
+              <span className="block text-agothe-white overflow-hidden">
+                <span className="hero-char block">PREDICT</span>
+              </span>
+              <span className="block overflow-hidden">
+                <span
+                  className="hero-char block text-agothe-danger"
+                  style={{ textShadow: '0 0 40px rgba(239,68,68,0.8), 0 2px 4px rgba(0,0,0,0.9)' }}
+                >
+                  COLLAPSE
+                </span>
+              </span>
+            </h2>
+            <p
+              data-hero-item
+              className="mt-4 max-w-xs text-sm text-white/80 leading-relaxed"
+              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.9)' }}
+            >
+              Agothe detects systemic failure before it surfaces.
+              Crisis intelligence. Delivered.
+            </p>
+          </div>
+        </div>
+
+        {/* =====================
+            BOTTOM HUD AREA
+        ===================== */}
+        <div className="px-4 lg:px-12 pb-5 space-y-3">
+
+          {/* STATS MODULE */}
+          <div
+            data-hero-item
+            className="rounded-xl overflow-hidden"
+            style={{
+              background: 'rgba(8, 18, 32, 0.55)',
+              backdropFilter: 'blur(16px) saturate(140%)',
+              WebkitBackdropFilter: 'blur(16px) saturate(140%)',
+              border: '1px solid rgba(0, 240, 255, 0.18)',
+              boxShadow: '0 2px 16px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(0,240,255,0.06)',
+            }}
+          >
+            <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
+              {metrics.map((m) => (
+                <div
+                  key={m.label}
+                  className="flex flex-col items-center justify-center py-3 px-3 gap-0.5"
+                >
+                  <div className="font-mono text-lg lg:text-xl font-bold text-agothe-white tracking-tight leading-tight">
+                    <Counter
+                      value={m.value}
+                      prefix={m.prefix}
+                      suffix={m.suffix}
+                      decimals={m.decimals}
+                      countDown={m.countDown}
+                    />
+                    {m.unit && (
+                      <span className="ml-1 text-xs font-normal text-agothe-muted">{m.unit}</span>
+                    )}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-widest text-agothe-muted text-center leading-tight">
+                    {m.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* SYSTEM OPERATIONAL - kept as-is */}
+          <div data-hero-item>
+            <LiveStatus />
+          </div>
+
+          {/* BADGE ROW */}
+          <div
+            data-hero-item
+            className="flex items-center justify-center gap-3 pb-1"
+          >
+            {badges.map((badge) => (
+              <span
+                key={badge}
+                className="px-3 py-1 rounded-full text-xs text-white/60 tracking-wide"
+                style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                }}
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );
